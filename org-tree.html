@@ -32,24 +32,20 @@
     <!-- has 32px gap on each side at any breakpoint -->
     <div class="container is-fluid">
         <!-- bground is white to see the area the chart will go. content should be centered on the x axis -->
-        <div class="org-tree has-text-centered">
-            <div class="federal">
-                <p>federal</p>
-            </div>
-            <div class="state">
-                <p>state</p>
-            </div>
-            <div class="local">
-                <p>local</p>
-
-            </div>
-          
+        <div class="columns has-background-primary" id="federal">
+      
         </div>
-      </div>
+        <div class="columns has-background-link" id="local">
+    
+        </div>
+        <div class="columns has-background-info" id="state">
+      
+        </div>
+        
+    </div>
     
     <!-- axios link -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
-    <!-- <script src="./assets/scripts/"></script> need to determine which js file is for this page --> 
-
+    <script src="./assets/scripts/org-tree.js"></script> 
   </body>
 </html>
