@@ -1,5 +1,4 @@
 function onSearchButtonClick(addr){
-    var test = "481 mission Street, San Francisco, Ca 94103";
     let urlStr = "https://www.googleapis.com/civicinfo/v2/representatives?address=" + addr;
 
     fetch(urlStr, { headers : { "x-goog-api-key" : "AIzaSyBz6RBLJ5i8mG7CLpH6SWfYcUTiRVa7FxA" } } )
@@ -7,6 +6,7 @@ function onSearchButtonClick(addr){
         if (response.ok) {
             response.json().then( (data) => {
                 localStorage.setItem("civicRepDataObj" , JSON.stringify(data) );
+                // loadFamilyTreePage("");
                 return true;
             });
         } else {
@@ -19,4 +19,8 @@ function onSearchButtonClick(addr){
         alert('Unable to connect to the Internet');
         console.log(error);
   });
+}
+
+function loadFamilyTreePage(paramsStr){
+    location.replace();
 }
