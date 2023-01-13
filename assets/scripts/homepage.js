@@ -1,7 +1,3 @@
-var addrEL = document.getElementById('user-input');
-var searchEl = document.getElementById('user-click');
-var addrText = addrEL.value.trim();
-
 // Gets civiv representatives data from civicinfo API
 function onSearchButtonClick(addr){
     let urlStr = "https://www.googleapis.com/civicinfo/v2/representatives?address=" + addr;
@@ -71,13 +67,14 @@ document.addEventListener("keydown", (event) => {
 
 //function to validate address and make a call to google civic information api
 function validateInputAddr() {
-    
+    //console.log("in");
+    var addrText = document.getElementById('user-input').value.trim();
     var addrRegex = /[#\/\!\@\$.;:{}%^&*()+`~]/gi; // invalid characters for address
 
     if (!addrText || addrRegex.test(addrText)) {
       console.log(addrText);
-      addrEL.value = "";
-      addrEL.focus();
+      //addrEL.value = "";
+      //addrEL.focus();
       document.getElementById('modalText').textContent = "Please enter valid address";
       openModal();
       return 
@@ -88,7 +85,8 @@ function validateInputAddr() {
 
 
 function init() {
-    searchEl.addEventListener("click",validateInputAddr);
+    //console.log("in");
+    document.getElementById('user-click').addEventListener("click",validateInputAddr);
 }
   
 init();
