@@ -43,6 +43,28 @@ function closeModal() {
     document.getElementById("modal1")
     .classList.remove("is-active"); 
 }
+
+// Add event listeners to close the modal
+// whenever user click outside modal
+document.querySelectorAll(
+    ".modal-background, .modal-close,.modal-card-head .delete, .modal-card-foot .button"
+    ).forEach(($el) => {
+      const $modal = $el.closest(".modal");
+      $el.addEventListener("click", () => {     
+        // Remove the is-active class from the modal
+        $modal.classList.remove("is-active");
+      });
+    });
+    
+    // Adding keyboard event listeners to close the modal
+document.addEventListener("keydown", (event) => {
+    const e = event || window.event;
+    if (e.keyCode === 27) {   
+            // Using escape key
+    closeModal();
+    }
+});
+
 //function to validate address and make a call to google civic information api
 function validateInputAddr() {
     
