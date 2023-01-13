@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your Rep List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+  </head>
+  <body id="org-tree-page">
+    <!-- nav section with link back to landing page -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                  <a href="./index.html" class="navbar-item">
+                    HOME
+                  </a>
+                </div>
+            </div>
+        </div>    
+    </nav>
+    <!-- title to page -->
+    <section class="hero is-small has-text-centered">
+        <div class="hero-body">
+          <p class="title">
+            Your Reps
+          </p>
+        </div>
+      </section>
+
+    <!-- has 32px gap on each side at any breakpoint -->
+    <div class="container is-fluid">
+        <!-- bground is white to see the area the chart will go. content should be centered on the x axis -->
+        <div class="org-tree has-text-centered">
+            <div class="federal">
+                <p>federal</p>
+            </div>
+            <div class="state">
+                <p>state</p>
+            </div>
+            <div class="local">
+                <p>local</p>
+
+            </div>
+          
+        </div>
+      </div>
+    
+    <!-- axios link -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
+    <!-- <script src="./assets/scripts/"></script> need to determine which js file is for this page --> 
+
+  </body>
+</html>
