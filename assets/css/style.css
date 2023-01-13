@@ -1,5 +1,8 @@
 /* main style sheet */
 
+
+
+
 /* Rep Org Tree Styling Below */
 #org-tree-page {
     background-color: #85b1b4;
@@ -8,4 +11,24 @@
 .org-tree {
     height: 100vh;
     background-color: #f3f5f6;
+}
+
+.navbar {
+    background-color: #d7d7d7;
+}
+
+.federal {
+    background-color: #d7d7d7;
+    border-style: solid;
+}
+
+.state {
+    background-color: #d7d7d7;
+    border-style: solid;
+}
+
+.local {
+    background-color: #d7d7d7;
+    border-style: solid;
+
 }
