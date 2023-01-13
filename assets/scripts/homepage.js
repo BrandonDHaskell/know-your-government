@@ -3,14 +3,15 @@ function onSearchButtonClick(addr){
     let urlStr = "https://www.googleapis.com/civicinfo/v2/representatives?address=" + addr;
 
     fetch(urlStr, { headers : { "x-goog-api-key" : "AIzaSyBz6RBLJ5i8mG7CLpH6SWfYcUTiRVa7FxA" } } )
-    .then(function (response) {
+    .then( (response) => {
         if (response.ok) {
-            response.json().then(function (data) {
+            response.json().then( (data) => {
                 localStorage.setItem("civicRepDataObj" , JSON.stringify(data) );
                 return true;
             });
         } else {
             // TODO: Address Response error handling checks here
+            // "404 : Bad request" - if address is bad
             alert('Error: ' + response.statusText);
         }
     })
