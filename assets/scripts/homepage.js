@@ -16,7 +16,7 @@ function onSearchButtonClick(addr){
             });
         } else {
             // TODO: Address Response error handling checks here
-            // "404 : Bad request" - if address is bad
+            // "400 : Bad request" - if address is bad
             //alert('Error: ' + response.statusText);
             document.getElementById('modalText').textContent = "Error: " + response.statusText;
             openModal();
