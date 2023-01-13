@@ -17,11 +17,15 @@ function onSearchButtonClick(addr){
         } else {
             // TODO: Address Response error handling checks here
             // "404 : Bad request" - if address is bad
-            alert('Error: ' + response.statusText);
+            //alert('Error: ' + response.statusText);
+            document.getElementById('modalText').textContent = "Error: " + response.statusText;
+            openModal();
         }
     })
     .catch(function (error) {
-        alert('Unable to connect to the Internet');
+        //alert('Unable to connect to the Internet');
+        document.getElementById('modalText').textContent = "Unable to connect to the Internet";
+        openModal();
         console.log(error);
   });
 }
