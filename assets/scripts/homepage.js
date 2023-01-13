@@ -1,3 +1,6 @@
+var addrEL = document.getElementById('user-input');
+var searchEl = document.getElementById('user-click');
+var addrText = addrEL.value.trim();
 
 // Gets civiv representatives data from civicinfo API
 function onSearchButtonClick(addr){
@@ -14,11 +17,15 @@ function onSearchButtonClick(addr){
         } else {
             // TODO: Address Response error handling checks here
             // "404 : Bad request" - if address is bad
-            alert('Error: ' + response.statusText);
+            //alert('Error: ' + response.statusText);
+            document.getElementById('modalText').textContent = "Error: " + response.statusText;
+            openModal();
         }
     })
     .catch(function (error) {
-        alert('Unable to connect to the Internet');
+        //alert('Unable to connect to the Internet');
+        document.getElementById('modalText').textContent = "Unable to connect to the Internet";
+        openModal();
         console.log(error);
   });
 }
@@ -30,3 +37,58 @@ function loadFamilyTreePage(paramsStr){
         location.assign('org-tree.html');
     }
 }
+function openModal() {
+    // Add is-active class on the modal
+    document.getElementById("modal1")
+    .classList.add("is-active");
+}
+  
+function closeModal() {
+    document.getElementById("modal1")
+    .classList.remove("is-active"); 
+}
+
+// Add event listeners to close the modal
+// whenever user click outside modal
+document.querySelectorAll(
+    ".modal-background, .modal-close,.modal-card-head .delete, .modal-card-foot .button"
+    ).forEach(($el) => {
+      const $modal = $el.closest(".modal");
+      $el.addEventListener("click", () => {     
+        // Remove the is-active class from the modal
+        $modal.classList.remove("is-active");
+      });
+    });
+    
+    // Adding keyboard event listeners to close the modal
+document.addEventListener("keydown", (event) => {
+    const e = event || window.event;
+    if (e.keyCode === 27) {   
+            // Using escape key
+    closeModal();
+    }
+});
+
+//function to validate address and make a call to google civic information api
+function validateInputAddr() {
+    
+    var addrRegex = /[#\/\!\@\$.;:{}%^&*()+`~]/gi; // invalid characters for address
+
+    if (!addrText || addrRegex.test(addrText)) {
+      console.log(addrText);
+      addrEL.value = "";
+      addrEL.focus();
+      document.getElementById('modalText').textContent = "Please enter valid address";
+      openModal();
+      return 
+    }
+    //api call
+    onSearchButtonClick(addrText);
+  }
+
+
+function init() {
+    searchEl.addEventListener("click",validateInputAddr);
+}
+  
+init();

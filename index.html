@@ -26,7 +26,32 @@
         </div>
             
     </div>
+    <!-- Modal code for input/apiresponse validation-->
+    <div class="modal" id="modal1">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+          <header class="modal-card-head">
+              <p class="modal-card-title">
+                  Address validation
+              </p>
 
+              <button class="delete"
+                  aria-label="close">
+              </button>
+          </header>
+          <section class="modal-card-body">
+            <!-- modalText value can be filled later in js as per 
+              appropriate response from api/input validation -->
+              <p  id="modalText"></p>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-danger">
+                close
+            </button>
+        </footer>
+      </div>
+    </div>
+    <!-- modal close -->
 
   <script href="./assets/scripts/homepage.js"></script>
   </body>
