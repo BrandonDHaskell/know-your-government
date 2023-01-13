@@ -33,7 +33,16 @@ function loadFamilyTreePage(paramsStr){
         location.assign('org-tree.html');
     }
 }
-
+function openModal() {
+    // Add is-active class on the modal
+    document.getElementById("modal1")
+    .classList.add("is-active");
+}
+  
+function closeModal() {
+    document.getElementById("modal1")
+    .classList.remove("is-active"); 
+}
 //function to validate address and make a call to google civic information api
 function validateInputAddr() {
     
