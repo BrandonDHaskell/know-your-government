@@ -1,3 +1,5 @@
+
+// Gets civiv representatives data from civicinfo API
 function onSearchButtonClick(addr){
     let urlStr = "https://www.googleapis.com/civicinfo/v2/representatives?address=" + addr;
 
@@ -6,7 +8,7 @@ function onSearchButtonClick(addr){
         if (response.ok) {
             response.json().then( (data) => {
                 localStorage.setItem("civicRepDataObj" , JSON.stringify(data) );
-                // loadFamilyTreePage("");
+                loadFamilyTreePage("");
                 return true;
             });
         } else {
@@ -22,5 +24,9 @@ function onSearchButtonClick(addr){
 }
 
 function loadFamilyTreePage(paramsStr){
-    location.replace();
+    if( paramsStr ){
+        location.assign('org-tree.html?' + paramsStr );
+    } else {
+        location.assign('org-tree.html');
+    }
 }
