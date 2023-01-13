@@ -1,4 +1,4 @@
-var kygDataObj = [
+var kygDataArr = [
     {
     division: 'federal',
     divisionName: 'dName',
@@ -28,47 +28,62 @@ var kygDataObj = [
     relatedLinks: ['www.google.com','www.wiki.org']
   }
   ];
-  
-  function displayReps(kygDataObj) {
-    for (var i = 0 ; i< kygDataObj.length ; i++) {
+ 
+  function createReps(repObj) {
+    var card = `<div class="column"  data-name=kygDataArr[i].repName>
+              <p>Name: ${kygDataArr[i].repName}<p>
+             <p>Division: ${kygDataArr[i].divisionName} <p>
+             <p>Role: ${kygDataArr[i].officeRole}</p>
+             
+    </div>`;
+
+    if (kygDataArr[i].division == "federal") {
+      document.getElementById('federal').innerHTML += card;
+    } else if (kygDataArr[i].division == "local") {
+        document.getElementById('local').innerHTML += card;
+    } else if (kygDataArr[i].division == "state") {
+      document.getElementById('local').innerHTML += card
+    }
+
+
+
+  }
+  function displayReps(kygDataArr) {
+    for (var i = 0 ; i< kygDataArr.length ; i++) {
       
-      if (kygDataObj[i].division == "federal") {
+      if (kygDataArr[i].division == "federal") {
         console.log("in federal");
-        document.getElementById('federal').innerHTML += 
-       // $('.federal').html(
-        `<div id="localbox">
-               <p>Name: ${kygDataObj[i].repName}<p>
-               <p>Division: ${kygDataObj[i].divisionName} <p>
-               <p>Role: ${kygDataObj[i].officeRole}</p>
+
+        createRep(kygDataArr[i]);
+      //   document.getElementById('federal').innerHTML += 
+      //  // $('.federal').html(
+      //   `<div class="column"  data-name=kygDataArr[i].repName>
+      //          <p>Name: ${kygDataArr[i].repName}<p>
+      //          <p>Division: ${kygDataArr[i].divisionName} <p>
+      //          <p>Role: ${kygDataArr[i].officeRole}</p>
                
-          </div>`;
-          //);
-  
-          document.getElementById("localbox").classList.add('column');
-          document.getElementById("localbox").classList.add("is-centered");
+      //     </div>`;
+
   
       }
       if (kygDataObj[i].division == "local") {
         console.log("in federal");
         document.getElementById('local').innerHTML += 
        // $('.federal').html(
-        `<div id="localbox">
+        `<div class="column" id="localbox">
                <p>Name: ${kygDataObj[i].repName}<p>
                <p>Division: ${kygDataObj[i].divisionName} <p>
                <p>Role: ${kygDataObj[i].officeRole}</p>
                
           </div>`;
-          //);
-  
-          document.getElementById("localbox").classList.add('column');
-          document.getElementById("localbox").classList.add("is-centered");
+          
   
       }
       if (kygDataObj[i].division == "state") {
         console.log("in federal");
         document.getElementById('state').innerHTML += 
        // $('.federal').html(
-        `<div id="localbox">
+        `<div class="column" id="localbox">
                <p>Name: ${kygDataObj[i].repName}<p>
                <p>Division: ${kygDataObj[i].divisionName} <p>
                <p>Role: ${kygDataObj[i].officeRole}</p>
@@ -76,8 +91,8 @@ var kygDataObj = [
           </div>`;
           //);
   
-          document.getElementById("localbox").classList.add('column');
-          document.getElementById("localbox").classList.add("is-centered");
+          //document.getElementById("localbox").classList.add('column');
+          //document.getElementById("localbox").classList.add("is-centered");
       }
       
   
