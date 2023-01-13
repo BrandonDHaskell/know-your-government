@@ -40,7 +40,6 @@ var kygDataObj = [
                <p>Name: ${kygDataObj[i].repName}<p>
                <p>Division: ${kygDataObj[i].divisionName} <p>
                <p>Role: ${kygDataObj[i].officeRole}</p>
-               <button type="button">view Info</button>
                
           </div>`;
           //);
@@ -57,7 +56,6 @@ var kygDataObj = [
                <p>Name: ${kygDataObj[i].repName}<p>
                <p>Division: ${kygDataObj[i].divisionName} <p>
                <p>Role: ${kygDataObj[i].officeRole}</p>
-               <button type="button">view Info</button>
                
           </div>`;
           //);
@@ -74,7 +72,6 @@ var kygDataObj = [
                <p>Name: ${kygDataObj[i].repName}<p>
                <p>Division: ${kygDataObj[i].divisionName} <p>
                <p>Role: ${kygDataObj[i].officeRole}</p>
-               <button type="button">view Info</button>
                
           </div>`;
           //);

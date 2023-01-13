@@ -1,6 +1,23 @@
 /* main style sheet */
 
+* {
+    border-style: solid;
+}
 
+/* Landing Page Styling Below */
+#landing-page {
+    background-color: salmon;
+    height: 100vh;
+}
+
+.bear, .cow {
+    border-style: solid;
+    
+}
+
+#title-font {
+    font-size: 100px;
+}
 
 
 /* Rep Org Tree Styling Below */
