@@ -1,0 +1,11 @@
+/* main style sheet */
+
+/* Rep Org Tree Styling Below */
+#org-tree-page {
+    background-color: #85b1b4;
+}
+
+.org-tree {
+    height: 100vh;
+    background-color: #f3f5f6;
+}
