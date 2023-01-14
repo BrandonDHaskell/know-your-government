@@ -110,30 +110,38 @@ function getKygDataObjs(){
     console.log(offices);
     console.log(officials);
 
-    
-    var kygDataObject = {};
-
-    Object.assign(kygDataObject, { [repName] : officials[0].name } );
-    Object.assign(kygDataObject, { [partyName] : officials[0].party } );
-    Object.assign(kygDataObject, { [addressStreet1] : officials[0].line1 } );
-    Object.assign(kygDataObject, { [addressStreet2] : officials[0].line2 } );
-    Object.assign(kygDataObject, { [addressCity] : officials[0].city } );
-    Object.assign(kygDataObject, { [addressState] : officials[0].state } );
-    Object.assign(kygDataObject, { [addressZip] : officials[0].zip } );
-    Object.assign(kygDataObject, { [phoneNum] : officials[0].phones[0] } );
-    Object.assign(kygDataObject, { [photoUrl] : officials[0].photoUrl } );
-    Object.assign(kygDataObject, { [relatedLinks] : officials[0].urls } );
-
-    // Get divisions of offices of the officials
-    for( var j = 0; j < offices.length; ++j ){
-      if( offices[j].officialIndices.includes(0) ){
-        // office data
-        Object.assign( kygDataObject, { [office] : offices[j].name } );
-        Object.assign( kygDataObject, { [officeRole] : offices.roles[0] } );
-        Object.assign( kygDataObject, { [division] : divisions[offices[j].divisionId] } );
-        Object.assign( kygDataObject, { [divisionName] : divisions[offices[j].divisionId] } );
+    for( var i = 0; i < officials.length; ++i ){
+      let kygDataObj = {};
+      console.log(i);
+      kygDataObj["repName"] = officials[i].name;
+      kygDataObj["partyName"] = officials[i].party;
+      // Somethimes address is not present
+      if( (officials[i].address in officials[i]) ){
+        kygDataObj["addressStreet1"] = officials[i].address[0].line1;
+        kygDataObj["addressStreet2"] = officials[i].address[0].line2;
+        kygDataObj["addressCity"] = officials[i].address[0].city;
+        kygDataObj["addressState"] = officials[i].address[0].state;
+        kygDataObj["addressZip"] = officials[i].address[0].zip;
       }
+      kygDataObj["phoneNum"] = (officials[i].phones in officials[i]) ? officials[i].phones[0] : "";
+      kygDataObj["photoUrl"] = officials[i].photoUrl;
+      kygDataObj["relatedLinks"] = officials[i].urls;
+
+      // Get divisions of offices of the officials
+      for( var j = 0; j < offices.length; ++j ){
+        if( offices[j].officialIndices.includes(i) ){
+          // set office data
+          kygDataObj["office"] = offices[j].name;
+          kygDataObj["officeRole"] = offices[j].roles[0];
+          // set division data
+          kygDataObj["division"] = divisions[offices[j].divisionId];
+          kygDataObj["divisionName"] = divisions[offices[j].divisionId].name;
+        }
+      }
+      kygDataObjs.push(kygDataObj);
     }
+    console.log(kygDataArr);
+
     //  There is an error and data is missing!
   } else {
     return "Page load failed! Data missing!"
