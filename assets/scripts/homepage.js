@@ -8,15 +8,18 @@ function onSearchButtonClick(addr){
             localStorage.setItem("civicRepDataObj" , JSON.stringify(response.data) );
             loadFamilyTreePage("");
             return true;
-        
+        }
+    })
+    .catch( (error) => {
         // "404 : Not found" - if address is legit but not available 
-        } else if ( response.status == 404 ) {
+        console.log(error);
+        if ( error.response.status == 404 ) {
 
-            document.getElementById('modalText').textContent = "We don't have an data for that address";
+            document.getElementById('modalText').textContent = "We don't have any data for that address";
             openModal();
 
         // "400 : Bad request" - if civic API can't resolve/normalize the address
-        } else if ( response.status == 400 ) {
+        } else if ( error.response.status == 400 ) {
             
             document.getElementById('modalText').textContent = "Error: Bad Request";
             openModal();
@@ -27,11 +30,6 @@ function onSearchButtonClick(addr){
             document.getElementById('modalText').textContent = "🤔 Oops! Something went wrong. Please try your search again.";
             openModal();
         }
-    })
-    .catch( (error) => {
-        document.getElementById('modalText').textContent = "Unable to connect to the Internet";
-        openModal();
-        console.log(error);
     });
 
 }
