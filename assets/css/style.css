@@ -1,13 +1,24 @@
 
 /* Landing Page Styling Below */
 #landing-page {
-    background-color: salmon;
+    background-image: url(/assets/images/landingBG.jpg);
+    background-size: cover;
     height: 100vh;
+    color: white;
 }
 
-.bear, .cow {
-    border-style: solid;
-    
+.kyg-title {
+    position: relative;
+    left: 100px;
+    top: 50px;
+}
+
+.address-input {
+    /* border-style: solid; */
+    position: relative;
+    top: 725px;
+    right: 50px;
+
 }
 
 #title-font {
@@ -27,6 +38,7 @@
 
 .navbar {
     background-color: #d7d7d7;
+    
 }
 
 #federal {
