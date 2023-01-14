@@ -20,27 +20,21 @@ const requestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=
 axios.get(requestUrl, {
     })
     .then(response => {
-      console.log(response.data);
-    })
-    .then(response => {
-        for(i = 0; i < data.items.length; i++)
-            var videoId = data.items[i].id.videoId;
-            var thumbnail = data.items[i].thumbnails.default.url;
-            var youtubeEl = document.querySelector('portland');
-
+      console.log(response.data); 
+      for(i = 0; i < response.data.items.length; i++) {
+            var videoId = response.data.items[i].id.videoId;
+            var thumbnail = response.data.items[i].snippet.thumbnails.default.url;
+            // var youtubeEl = document.querySelector('portland');
             console.log(videoId, thumbnail)
+            console.log(response.data.items.length)
+            
 
-            var vidInsert = document.createElement('div')
-
-
-
-
-
+            
+        }  
     })
+        
     .catch(error => {
       console.log(error);
     });
     
   
-
-    
