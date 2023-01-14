@@ -14,7 +14,7 @@ function onSearchButtonClick(addr){
             // TODO: Address Response error handling checks here
             // "400 : Bad request" - if address is bad
             //alert('Error: ' + response.statusText);
-            document.getElementById('modalText').textContent = "Error: " + response.statusText;
+            document.getElementById('modalText').textContent = "Error: Bad Request";
             openModal();
         }
     })

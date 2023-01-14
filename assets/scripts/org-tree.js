@@ -3,20 +3,12 @@
   function createReps(repObj) {
     var card = `<div class="column"  data-name=repObj.repName>
             <h1><strong>${repObj.repName}</strong><h1>
-             <p>Office: ${repObj.office} <p>
-             <p>Role: ${repObj.officeRole}</p>
-             <p>Party Name: ${repObj.partyName}</p>
+             <p><strong>Office: </strong>${repObj.office} <p>
+             <p><strong>Role: </strong>${repObj.officeRole}</p>
+             <p><strong>Party Name: </strong>${repObj.partyName}</p>
              
     </div>`;
     document.getElementById('federal').innerHTML += card;
-    //add reps based on the division
-    // if (repObj.division == "federal") {
-    //   document.getElementById('federal').innerHTML += card;
-    // } else if (repObj.division == "local") {
-    //     document.getElementById('local').innerHTML += card;
-    // } else if (repObj.division == "state") {
-    //   document.getElementById('state').innerHTML += card
-    // }
   }
 
   function displayReps(kygDataArr) {
@@ -87,13 +79,13 @@ function getKygDataObjs(){
 //   displayReps(kygDataArr);
 // };
   
-function runCode(){
+function loadReps(){
   kygDataArr = getKygDataObjs();
   console.log("obj value");
   console.log(kygDataArr);
   displayReps(kygDataArr);
 }
 
-runCode();
+loadReps();
   
   
