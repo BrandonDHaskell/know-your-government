@@ -25,11 +25,6 @@ function getKygDataObjs(){
     var officials = googObj.officials;        //  Array of civic officials
     var kygDataObjs = [];                     //  Array of KYG data objects
 
-    // console.log(googObj);
-    // console.log(divisions);
-    // console.log(offices);
-    // console.log(officials);
-
     for( var i = 0; i < officials.length; ++i ){
       var kygDataObj = {};
 
@@ -74,19 +69,6 @@ function getKygDataObjs(){
   }
 }
 
-function displayOrgTree(){
-  if( localStorage.getItem("civicRepDataObj") ){
-    var googObj = JSON.parse(localStorage.getItem("civicRepDataObj"));
-  
-    console.log(googObj);
-  
-  } else {
-    // There is an error and data is missing!
-    return "Page load failed! Data missing!"
-  }
-
-}
-
 function addCardClicks(){
   var cards = document.getElementsByClassName('rep-card');
 
@@ -98,11 +80,30 @@ function addCardClicks(){
   });
 
 }
-  
+
+function buildOrgPageDisplay(){
+  if( localStorage.getItem("civicRepDataObj") ){
+    let civicApiData = JSON.parse(localStorage.getItem("civicRepDataObj"));
+    
+    var divisions = civicApiData.divisions;        //  API data object
+    var offices = civicApiData.offices;            //  Array of civic offices
+    var officials = civicApiData.officials;        //  Array of civic officials
+
+    console.log(civicApiData);
+    console.log(offices);
+    console.log(divisions);
+    console.log(offices);
+    console.log(officials);
+
+    
+    
+    return true;
+  }
+}
+
+
 function loadReps(){
   kygDataArr = getKygDataObjs();
-  console.log("obj value");
-  console.log(kygDataArr);
   displayReps(kygDataArr);
   addCardClicks();
 }
