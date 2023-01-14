@@ -55,7 +55,7 @@ var kygDataArr = [
     repName: 'newsmom',
     relatedLinks: ['www.google.com','www.wiki.org']
   },
-  
+
   {
     division: 'local',
     divisionName: 'dName',
@@ -93,8 +93,7 @@ var kygDataArr = [
 
   function displayReps(kygDataArr) {
     for (var i = 0 ; i< kygDataArr.length ; i++) {
-        createReps(kygDataArr[i]);
-    
+        createReps(kygDataArr[i]); 
     }
   }
     
