@@ -12,7 +12,7 @@ function onSearchButtonClick(addr){
             });
         } else {
             // TODO: Address Response error handling checks here
-            // "400 : Bad request" - if address is bad
+            // "404 : Bad request" - if address is bad
             //alert('Error: ' + response.statusText);
             document.getElementById('modalText').textContent = "Error: Bad Request";
             openModal();
@@ -24,6 +24,23 @@ function onSearchButtonClick(addr){
         openModal();
         console.log(error);
   });
+}
+
+
+
+function testCall() {
+    // , { headers: { "X-API-Key" : "6JvLrrURJvWmH0YqmJYnsLYpwLkz3NKD2ipjRLod" }}
+    axios.get("https://api.propublica.org/congress/117")
+        .then( (response) => {
+            if( response.responseText = "ok"){
+                console.log(response);
+            }
+        })
+        .catch( (error) => {
+            document.getElementById('modalText').textContent = "Unable to connect to the Internet";
+            openModal();
+            console.log(error);
+        })
 }
 
 function loadFamilyTreePage(paramsStr){
