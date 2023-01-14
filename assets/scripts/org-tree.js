@@ -89,6 +89,9 @@ function buildOrgPageDisplay(){
     var offices = civicApiData.offices;            //  Array of civic offices
     var officials = civicApiData.officials;        //  Array of civic officials
 
+    // document.getElementById("normalized-search-results");
+    setNormalizedResults(civicApiData.normalizedInput);
+
     console.log(civicApiData);
     console.log(offices);
     console.log(divisions);
@@ -99,6 +102,30 @@ function buildOrgPageDisplay(){
     
     return true;
   }
+}
+
+// The search is robust and a full address search is not required
+// this function formats the text to display as the page header based on 
+// any part of the address being normalized
+function setNormalizedResults(normalizedObj){
+  var addrStr = "";
+
+  // Handle stree part
+  addrStr += normalizedObj.line1;
+  addrStr += (normalizedObj.line2 in normalizedObj) ? ", " + normalizedObj.line2 : "" ;  // uncertain on this scenario, but can handle it if it exists
+
+  // if street part is empty at this point, no street address was returned
+  // ignore comma separation
+  (addrStr !== "") ? addrStr += ", " + normalizedObj.city : addrStr += normalizedObj.city;
+
+  // if addrStr is still empty, then ignore comma
+  (addrStr !== "") ? addrStr += ", " + normalizedObj.state : addrStr += normalizedObj.state;
+
+  addrStr += " " + normalizedObj.zip;
+
+  document.getElementById("normalized-search-results").textContent = addrStr;
+
+  console.log(addrStr);
 }
 
 
