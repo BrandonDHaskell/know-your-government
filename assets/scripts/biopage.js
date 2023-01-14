@@ -37,23 +37,27 @@ axios.get(requestUrl, {
     //api call to retrieve news articles
     function newsApi(query){
       const apiKey = 'a654c191-aae9-4b05-95d8-d13ad6c72fa0';
-      // var queryStr = "Kamala D. Harris";
       const reqUrl = `https://api.goperigon.com/v1/all?q=${query}&apiKey=${apiKey}`;
       var newsEl = document.getElementById('news');
       axios.get(reqUrl, {
       })
       .then(response => {
         console.log(response.data); 
-  
-        for (i = 0 ; i <response.data.articles.length ; i++) {
-          if(response.data.articles[i].country == "us") {
-            var newsUrl = response.data.articles[i].url;
-            var newsLink = document.createElement('a');
-            newsLink.textContent = response.data.articles[i].title;
-            newsLink.setAttribute('href',newsUrl);
-            newsEl.append(newsLink);
-            var brkEl = document.createElement('br');
-            newsEl.append(brkEl);
+        if (response.data.articles.length === 0) {
+          emptyEl = document.createElement('p');
+          emptyEl.textContent = "Sorry, there don't seem to be any articles available."
+          newsEl.append(emptyEl);
+        } else {
+          for (i = 0 ; i <response.data.articles.length ; i++) {
+            if(response.data.articles[i].country == "us") {
+              var newsUrl = response.data.articles[i].url;
+              var newsLink = document.createElement('a');
+              newsLink.textContent = response.data.articles[i].title;
+              newsLink.setAttribute('href',newsUrl);
+              newsEl.append(newsLink);
+              var brkEl = document.createElement('br');
+              newsEl.append(brkEl);
+            }
           }
         }
       })    
