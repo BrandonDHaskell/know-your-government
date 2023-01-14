@@ -1,13 +1,16 @@
 
   //function to create representative cards and display them  
   function createReps(repObj) {
-    var card = `<div class="column"  data-name=repObj.repName>
+    var card = `<div class="column"  data-name=${repObj.repName}>
             <h1><strong>${repObj.repName}</strong><h1>
              <p><strong>Office: </strong>${repObj.office} <p>
              <p><strong>Role: </strong>${repObj.officeRole}</p>
              <p><strong>Party Name: </strong>${repObj.partyName}</p>
              
     </div>`;
+    // card.addEventListener('click', (event) => {
+
+    // });
     document.getElementById('federal').innerHTML += card;
   }
 
