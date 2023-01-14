@@ -29,11 +29,18 @@ function onSearchButtonClick(addr){
 
 
 function testCall() {
-    // , { headers: { "X-API-Key" : "6JvLrrURJvWmH0YqmJYnsLYpwLkz3NKD2ipjRLod" }}
-    axios.get("https://api.propublica.org/congress/117")
+    // , { headers: { "X-API-Key" : "6JvLrrURJvWmH0YqmJYnsLYpwLkz3NKD2ipjRLod" }} //responseText = "ok"
+    var urlStr = "https://www.googleapis.com/civicinfo/v2/representatives?address=5905 Marymac Dr SW, Port Orchard, WA";
+
+    axios.get(urlStr, { headers : { "x-goog-api-key" : "AIzaSyBz6RBLJ5i8mG7CLpH6SWfYcUTiRVa7FxA" }} )
         .then( (response) => {
-            if( response.responseText = "ok"){
+            if( response.statusText === "OK" ){ 
                 console.log(response);
+                response.json().then( (data) => {
+                    localStorage.setItem("civicRepDataObj" , JSON.stringify(data) );
+                loadFamilyTreePage("");
+                return true;
+                });
             }
         })
         .catch( (error) => {
