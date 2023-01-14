@@ -43,27 +43,38 @@ axios.get(requestUrl, {
     
 
 
-    //api call to retrieve news articles
+    api call to retrieve news articles
     axios.get(reqUrl, {
     })
     .then(response => {
       console.log(response.data); 
       var i = 0;
       while (i<5) {
-        if(response.data.articles[i].country = "us") {
+        if(response.data.articles[i].country == "us") {
 
           var newsUrl = response.data.articles[i].url;
           var newsLink = document.createElement('a');
+          newsLink.textContent = "link";
           newsLink.setAttribute('href',newsUrl);
           newsEl.append(newsLink);
+          i++;
 
         }
       }
-            
-       
       
     })     
     .catch(error => {
       console.log(error);
     });
     
+
+    function getParams() {
+      // Get the search params out of the URL
+      var decodedURL = decodeURI(document.location);
+      //console.log(decodedURL);
+      var searchParamsArr = decodedURL.split('&');
+      // Get the query values
+      var query = searchParamsArr[0].split('=').pop();
+      console.log(query);
+    }
+    getParams();
