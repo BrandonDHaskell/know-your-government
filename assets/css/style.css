@@ -29,22 +29,17 @@
     background-color: #d7d7d7;
 }
 
-.federal {
+#federal {
     background-color: #d7d7d7;
     border-style: solid;
-}
-
-.state {
-    background-color: #d7d7d7;
-    border-style: solid;
-}
-
-.local {
-    background-color: #d7d7d7;
-    border-style: solid;
-
+    color: black;
 }
 
 .column {
     border : 1px solid black;
+}
+
+.column:hover {
+    cursor: pointer;
+    background-color: lightcyan;
 }

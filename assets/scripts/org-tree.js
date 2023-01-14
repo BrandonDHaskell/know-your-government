@@ -1,94 +1,14 @@
-var kygDataArr = [
-    {
-    division: 'federal',
-    divisionName: 'dName',
-    officeRole: 'role',
-    repName: 'Biden',
-    relatedLinks: ['www.google.com','www.wiki.org']
-  },
-  {
-    division: 'federal',
-    divisionName: 'dName',
-    officeRole: 'role',
-    repName: 'newsmom',
-    relatedLinks: ['www.google.com','www.wiki.org']
-  },
-  {
-    division: 'federal',
-    divisionName: 'dName',
-    officeRole: 'role',
-    repName: 'newsmom',
-    relatedLinks: ['www.google.com','www.wiki.org']
-  },
-  {
-    division: 'federal',
-    divisionName: 'dName',
-    officeRole: 'role',
-    repName: 'newsmom',
-    relatedLinks: ['www.google.com','www.wiki.org']
-  },
-  {
-    division: 'federal',
-    divisionName: 'dName',
-    officeRole: 'role',
-    repName: 'newsmom',
-    relatedLinks: ['www.google.com','www.wiki.org']
-  },
-  {
-    division: 'federal',
-    divisionName: 'dName',
-    officeRole: 'role',
-    repName: 'newsmom',
-    relatedLinks: ['www.google.com','www.wiki.org']
-  },
-  {
-    division: 'federal',
-    divisionName: 'dName',
-    officeRole: 'role',
-    repName: 'newsmom',
-    relatedLinks: ['www.google.com','www.wiki.org']
-  },
-  {
-    division: 'federal',
-    divisionName: 'dName',
-    officeRole: 'role',
-    repName: 'newsmom',
-    relatedLinks: ['www.google.com','www.wiki.org']
-  },
 
-  {
-    division: 'local',
-    divisionName: 'dName',
-    officeRole: 'role',
-    repName: 'Biden',
-    relatedLinks: ['www.google.com','www.wiki.org']
-  },
-  {
-    division: 'state',
-    divisionName: 'dName',
-    officeRole: 'role',
-    repName: 'newsmom',
-    relatedLinks: ['www.google.com','www.wiki.org']
-  }
-  ];
- 
   //function to create representative cards and display them  
   function createReps(repObj) {
     var card = `<div class="column"  data-name=repObj.repName>
-              <p>Name: ${repObj.repName}<p>
-             <p>Division: ${repObj.divisionName} <p>
-             <p>Role: ${repObj.officeRole}</p>
+            <h1><strong>${repObj.repName}</strong><h1>
+             <p><strong>Office: </strong>${repObj.office} <p>
+             <p><strong>Role: </strong>${repObj.officeRole}</p>
+             <p><strong>Party Name: </strong>${repObj.partyName}</p>
              
     </div>`;
-
-    //add reps based on the division
-    if (repObj.division == "federal") {
-      document.getElementById('federal').innerHTML += card;
-    } else if (repObj.division == "local") {
-        document.getElementById('local').innerHTML += card;
-    } else if (repObj.division == "state") {
-      document.getElementById('state').innerHTML += card
-    }
+    document.getElementById('federal').innerHTML += card;
   }
 
   function displayReps(kygDataArr) {
@@ -105,10 +25,10 @@ function getKygDataObjs(){
     var officials = googObj.officials;        //  Array of civic officials
     var kygDataObjs = [];                     //  Array of KYG data objects
 
-    console.log(googObj);
-    console.log(divisions);
-    console.log(offices);
-    console.log(officials);
+    // console.log(googObj);
+    // console.log(divisions);
+    // console.log(offices);
+    // console.log(officials);
 
     for( var i = 0; i < officials.length; ++i ){
       var kygDataObj = {};
@@ -159,9 +79,13 @@ function getKygDataObjs(){
 //   displayReps(kygDataArr);
 // };
   
-function runCode(){
+function loadReps(){
   kygDataArr = getKygDataObjs();
+  console.log("obj value");
+  console.log(kygDataArr);
   displayReps(kygDataArr);
 }
+
+loadReps();
   
   
