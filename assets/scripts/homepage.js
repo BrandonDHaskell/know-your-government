@@ -3,7 +3,7 @@ function onSearchButtonClick(addr){
     let urlStr = "https://www.googleapis.com/civicinfo/v2/representatives?address=" + addr;    
     axios.get(urlStr, { headers : { "x-goog-api-key" : "AIzaSyBz6RBLJ5i8mG7CLpH6SWfYcUTiRVa7FxA" }} )
     .then( (response) => {
-        if( response.statusText === "OK" ){ 
+        if( response.status >= 200 && response.status < 300 ){ 
             console.log(response);
             localStorage.setItem("civicRepDataObj" , JSON.stringify(response.data) );
             loadFamilyTreePage("");

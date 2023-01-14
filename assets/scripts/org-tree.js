@@ -1,16 +1,13 @@
 
   //function to create representative cards and display them  
   function createReps(repObj) {
-    var card = `<div class="column"  data-name=${repObj.repName}>
+    var card = `<div class="column rep-card"  data-name=${repObj.repName}>
             <h1><strong>${repObj.repName}</strong><h1>
              <p><strong>Office: </strong>${repObj.office} <p>
              <p><strong>Role: </strong>${repObj.officeRole}</p>
              <p><strong>Party Name: </strong>${repObj.partyName}</p>
              
     </div>`;
-    // card.addEventListener('click', (event) => {
-
-    // });
     document.getElementById('federal').innerHTML += card;
   }
 
@@ -77,6 +74,31 @@ function getKygDataObjs(){
   }
 }
 
+function displayOrgTree(){
+  if( localStorage.getItem("civicRepDataObj") ){
+    var googObj = JSON.parse(localStorage.getItem("civicRepDataObj"));
+  
+    console.log(googObj);
+  
+  } else {
+    // There is an error and data is missing!
+    return "Page load failed! Data missing!"
+  }
+
+}
+
+function addCardClicks(){
+  var cards = document.getElementsByClassName('rep-card');
+
+  Array.from(cards).forEach( (card) => {
+    card.addEventListener('click', (event) => {
+      console.log(event.currentTarget);
+      location.assign("biopage.html" + "?civicName=" + event.currentTarget.dataset.name);
+    });
+  });
+
+}
+
 // document.onload = function(event){
 //   kygDataArr = getKygDataObjs();
 //   displayReps(kygDataArr);
@@ -87,6 +109,7 @@ function loadReps(){
   console.log("obj value");
   console.log(kygDataArr);
   displayReps(kygDataArr);
+  addCardClicks();
 }
 
 loadReps();
