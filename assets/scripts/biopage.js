@@ -22,9 +22,25 @@ axios.get(requestUrl, {
     .then(response => {
       console.log(response.data);
     })
+    .then(response => {
+        for(i = 0; i < data.items.length; i++)
+            var videoId = data.items[i].id.videoId;
+            var thumbnail = data.items[i].thumbnails.default.url;
+            var youtubeEl = document.querySelector('portland');
+
+            console.log(videoId, thumbnail)
+
+            var vidInsert = document.createElement('div')
+
+
+
+
+
+    })
     .catch(error => {
       console.log(error);
     });
+    
   
 
     
