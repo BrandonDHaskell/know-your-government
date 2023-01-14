@@ -1,4 +1,4 @@
-var kygDataObj = [
+var kygDataArr = [
     {
     division: 'federal',
     divisionName: 'dName',
@@ -14,6 +14,49 @@ var kygDataObj = [
     relatedLinks: ['www.google.com','www.wiki.org']
   },
   {
+    division: 'federal',
+    divisionName: 'dName',
+    officeRole: 'role',
+    repName: 'newsmom',
+    relatedLinks: ['www.google.com','www.wiki.org']
+  },
+  {
+    division: 'federal',
+    divisionName: 'dName',
+    officeRole: 'role',
+    repName: 'newsmom',
+    relatedLinks: ['www.google.com','www.wiki.org']
+  },
+  {
+    division: 'federal',
+    divisionName: 'dName',
+    officeRole: 'role',
+    repName: 'newsmom',
+    relatedLinks: ['www.google.com','www.wiki.org']
+  },
+  {
+    division: 'federal',
+    divisionName: 'dName',
+    officeRole: 'role',
+    repName: 'newsmom',
+    relatedLinks: ['www.google.com','www.wiki.org']
+  },
+  {
+    division: 'federal',
+    divisionName: 'dName',
+    officeRole: 'role',
+    repName: 'newsmom',
+    relatedLinks: ['www.google.com','www.wiki.org']
+  },
+  {
+    division: 'federal',
+    divisionName: 'dName',
+    officeRole: 'role',
+    repName: 'newsmom',
+    relatedLinks: ['www.google.com','www.wiki.org']
+  },
+
+  {
     division: 'local',
     divisionName: 'dName',
     officeRole: 'role',
@@ -28,68 +71,33 @@ var kygDataObj = [
     relatedLinks: ['www.google.com','www.wiki.org']
   }
   ];
-  
-  function displayReps(kygDataObj) {
-    for (var i = 0 ; i< kygDataObj.length ; i++) {
-      
-      if (kygDataObj[i].division == "federal") {
-        console.log("in federal");
-        document.getElementById('federal').innerHTML += 
-       // $('.federal').html(
-        `<div id="localbox">
-               <p>Name: ${kygDataObj[i].repName}<p>
-               <p>Division: ${kygDataObj[i].divisionName} <p>
-               <p>Role: ${kygDataObj[i].officeRole}</p>
-               
-          </div>`;
-          //);
-  
-          document.getElementById("localbox").classList.add('column');
-          document.getElementById("localbox").classList.add("is-centered");
-  
-      }
-      if (kygDataObj[i].division == "local") {
-        console.log("in federal");
-        document.getElementById('local').innerHTML += 
-       // $('.federal').html(
-        `<div id="localbox">
-               <p>Name: ${kygDataObj[i].repName}<p>
-               <p>Division: ${kygDataObj[i].divisionName} <p>
-               <p>Role: ${kygDataObj[i].officeRole}</p>
-               
-          </div>`;
-          //);
-  
-          document.getElementById("localbox").classList.add('column');
-          document.getElementById("localbox").classList.add("is-centered");
-  
-      }
-      if (kygDataObj[i].division == "state") {
-        console.log("in federal");
-        document.getElementById('state').innerHTML += 
-       // $('.federal').html(
-        `<div id="localbox">
-               <p>Name: ${kygDataObj[i].repName}<p>
-               <p>Division: ${kygDataObj[i].divisionName} <p>
-               <p>Role: ${kygDataObj[i].officeRole}</p>
-               
-          </div>`;
-          //);
-  
-          document.getElementById("localbox").classList.add('column');
-          document.getElementById("localbox").classList.add("is-centered");
-      }
-      
-  
-  
-  
+ 
+  //function to create representative cards and display them  
+  function createReps(repObj) {
+    var card = `<div class="column"  data-name=repObj.repName>
+              <p>Name: ${repObj.repName}<p>
+             <p>Division: ${repObj.divisionName} <p>
+             <p>Role: ${repObj.officeRole}</p>
+             
+    </div>`;
+
+    //add reps based on the division
+    if (repObj.division == "federal") {
+      document.getElementById('federal').innerHTML += card;
+    } else if (repObj.division == "local") {
+        document.getElementById('local').innerHTML += card;
+    } else if (repObj.division == "state") {
+      document.getElementById('state').innerHTML += card
     }
-    
-    
-  
   }
-  
-  displayReps(kygDataObj);
+
+  function displayReps(kygDataArr) {
+    for (var i = 0 ; i< kygDataArr.length ; i++) {
+        createReps(kygDataArr[i]); 
+    }
+  }
+    
+  displayReps(kygDataArr);
   
   
   
