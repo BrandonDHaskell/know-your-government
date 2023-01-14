@@ -35,12 +35,9 @@ function testCall() {
     axios.get(urlStr, { headers : { "x-goog-api-key" : "AIzaSyBz6RBLJ5i8mG7CLpH6SWfYcUTiRVa7FxA" }} )
         .then( (response) => {
             if( response.statusText === "OK" ){ 
-                console.log(response);
-                response.json().then( (data) => {
-                    localStorage.setItem("civicRepDataObj" , JSON.stringify(data) );
+                localStorage.setItem("civicRepDataObj" , JSON.stringify(response.data) );
                 loadFamilyTreePage("");
                 return true;
-                });
             }
         })
         .catch( (error) => {
