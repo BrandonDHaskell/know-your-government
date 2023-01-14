@@ -23,13 +23,15 @@ axios.get(requestUrl, {
       console.log(response.data); 
       for(i = 0; i < response.data.items.length; i++) {
             var videoId = response.data.items[i].id.videoId;
-            var thumbnail = `https://img.youtube.com/vi/${videoId}/0.jpg`;
+            var ytLink = `https://www.youtube.com/embed/${videoId}`;
             
-            var youtubeEl = document.getElementById('portland');
-            var youtubeImg = document.createElement('img');
-            youtubeImg.src = thumbnail
+            var ytEl = document.getElementById('portland');
+            var ytEmbed = document.createElement('iframe');
+            ytEmbed.setAttribute('src', ytLink);
+            ytEmbed.setAttribute('frameborder', '0');
+            ytEmbed.setAttribute('allowfullscreen', 'true');
             
-            youtubeEl.append(youtubeImg)
+            ytEl.append(ytEmbed)
             
 
             
