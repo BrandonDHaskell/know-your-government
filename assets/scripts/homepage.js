@@ -21,7 +21,7 @@ function onSearchButtonClick(addr){
         // "400 : Bad request" - if civic API can't resolve/normalize the address
         } else if ( error.response.status == 400 ) {
             
-            document.getElementById('modalText').textContent = "Error: Bad Request";
+            document.getElementById('modalText').textContent = "We can't find that address.";
             openModal();
         
         //  other error are unknown
