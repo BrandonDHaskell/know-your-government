@@ -1,29 +1,39 @@
 // Gets civiv representatives data from civicinfo API
 function onSearchButtonClick(addr){
-    let urlStr = "https://www.googleapis.com/civicinfo/v2/representatives?address=" + addr;
-
-    fetch(urlStr, { headers : { "x-goog-api-key" : "AIzaSyBz6RBLJ5i8mG7CLpH6SWfYcUTiRVa7FxA" } } )
+    let urlStr = "https://www.googleapis.com/civicinfo/v2/representatives?address=" + addr;    
+    axios.get(urlStr, { headers : { "x-goog-api-key" : "AIzaSyBz6RBLJ5i8mG7CLpH6SWfYcUTiRVa7FxA" }} )
     .then( (response) => {
-        if (response.ok) {
-            response.json().then( (data) => {
-                localStorage.setItem("civicRepDataObj" , JSON.stringify(data) );
-                loadFamilyTreePage("");
-                return true;
-            });
-        } else {
-            // TODO: Address Response error handling checks here
-            // "400 : Bad request" - if address is bad
-            //alert('Error: ' + response.statusText);
+        if( response.statusText === "OK" ){ 
+            console.log(response);
+            localStorage.setItem("civicRepDataObj" , JSON.stringify(response.data) );
+            loadFamilyTreePage("");
+            return true;
+        
+        // "404 : Not found" - if address is legit but not available 
+        } else if ( response.status == 404 ) {
+
+            document.getElementById('modalText').textContent = "We don't have an data for that address";
+            openModal();
+
+        // "400 : Bad request" - if civic API can't resolve/normalize the address
+        } else if ( response.status == 400 ) {
+            
             document.getElementById('modalText').textContent = "Error: Bad Request";
+            openModal();
+        
+        //  other error are unknown
+        } else {
+        
+            document.getElementById('modalText').textContent = "🤔 Oops! Something went wrong. Please try your search again.";
             openModal();
         }
     })
-    .catch(function (error) {
-        //alert('Unable to connect to the Internet');
+    .catch( (error) => {
         document.getElementById('modalText').textContent = "Unable to connect to the Internet";
         openModal();
         console.log(error);
-  });
+    });
+
 }
 
 function loadFamilyTreePage(paramsStr){
