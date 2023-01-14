@@ -108,6 +108,6 @@ function loadReps(){
   addCardClicks();
 }
 
-loadReps();
+// loadReps();
   
   
