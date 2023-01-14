@@ -54,6 +54,7 @@ axios.get(requestUrl, {
               var newsLink = document.createElement('a');
               newsLink.textContent = response.data.articles[i].title;
               newsLink.setAttribute('href',newsUrl);
+              newsLink.setAttribute('target','_blank');
               newsEl.append(newsLink);
               var brkEl = document.createElement('br');
               newsEl.append(brkEl);
