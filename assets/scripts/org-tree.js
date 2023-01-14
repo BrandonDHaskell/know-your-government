@@ -96,7 +96,50 @@ var kygDataArr = [
         createReps(kygDataArr[i]); 
     }
   }
+
+function getKygDataObjs(){
+  if( localStorage.getItem("civicRepDataObj") ){
+    var googObj = JSON.parse(localStorage.getItem("civicRepDataObj"));
+    var divisions = googObj.divisions;        //  API data object
+    var offices = googObj.offices;            //  Array of civic offices
+    var officials = googObj.officials;        //  Array of civic officials
+    var kygDataObjs = [];                     //  Array of KYG data objects
+
+    console.log(googObj);
+    console.log(divisions);
+    console.log(offices);
+    console.log(officials);
+
     
+    var kygDataObject = {};
+
+    Object.assign(kygDataObject, { [repName] : officials[0].name } );
+    Object.assign(kygDataObject, { [partyName] : officials[0].party } );
+    Object.assign(kygDataObject, { [addressStreet1] : officials[0].line1 } );
+    Object.assign(kygDataObject, { [addressStreet2] : officials[0].line2 } );
+    Object.assign(kygDataObject, { [addressCity] : officials[0].city } );
+    Object.assign(kygDataObject, { [addressState] : officials[0].state } );
+    Object.assign(kygDataObject, { [addressZip] : officials[0].zip } );
+    Object.assign(kygDataObject, { [phoneNum] : officials[0].phones[0] } );
+    Object.assign(kygDataObject, { [photoUrl] : officials[0].photoUrl } );
+    Object.assign(kygDataObject, { [relatedLinks] : officials[0].urls } );
+
+    // Get divisions of offices of the officials
+    for( var j = 0; j < offices.length; ++j ){
+      if( offices[j].officialIndices.includes(0) ){
+        // office data
+        Object.assign( kygDataObject, { [office] : offices[j].name } );
+        Object.assign( kygDataObject, { [officeRole] : offices.roles[0] } );
+        Object.assign( kygDataObject, { [division] : divisions[offices[j].divisionId] } );
+        Object.assign( kygDataObject, { [divisionName] : divisions[offices[j].divisionId] } );
+      }
+    }
+    //  There is an error and data is missing!
+  } else {
+    return "Page load failed! Data missing!"
+  }
+}
+
   displayReps(kygDataArr);
   
   
