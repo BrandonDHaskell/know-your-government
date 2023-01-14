@@ -23,10 +23,13 @@ axios.get(requestUrl, {
       console.log(response.data); 
       for(i = 0; i < response.data.items.length; i++) {
             var videoId = response.data.items[i].id.videoId;
-            var thumbnail = response.data.items[i].snippet.thumbnails.default.url;
-            // var youtubeEl = document.querySelector('portland');
-            console.log(videoId, thumbnail)
-            console.log(response.data.items.length)
+            var thumbnail = `https://img.youtube.com/vi/${videoId}/0.jpg`;
+            
+            var youtubeEl = document.getElementById('portland');
+            var youtubeImg = document.createElement('img');
+            youtubeImg.src = thumbnail
+            
+            youtubeEl.append(youtubeImg)
             
 
             
