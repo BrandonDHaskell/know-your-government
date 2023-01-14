@@ -92,17 +92,12 @@ function addCardClicks(){
 
   Array.from(cards).forEach( (card) => {
     card.addEventListener('click', (event) => {
-      console.log(event.currentTarget);
-      location.assign("biopage.html" + "?civicName=" + event.currentTarget.dataset.name);
+      // encoding URI to prevent clipping when name has spaces
+      location.assign("biopage.html" + "?civicName=" + encodeURI(event.currentTarget.childNodes[1].childNodes[0].innerText));
     });
   });
 
 }
-
-// document.onload = function(event){
-//   kygDataArr = getKygDataObjs();
-//   displayReps(kygDataArr);
-// };
   
 function loadReps(){
   kygDataArr = getKygDataObjs();
