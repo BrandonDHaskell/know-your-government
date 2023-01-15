@@ -7,23 +7,15 @@
     color: white;
 }
 
-.kyg-title {
-    position: relative;
-    left: 100px;
-    top: 50px;
-}
-
-.address-input {
-    /* border-style: solid; */
-    position: relative;
-    top: 725px;
-    right: 50px;
-
-}
-
 #title-font {
     font-size: 100px;
+    padding: 30px;
 }
+
+#form  {
+    padding-top: 400px;
+}
+
 
 
 /* Rep Org Tree Styling Below */
@@ -47,11 +39,26 @@
     color: black;
 }
 
-.column {
+/* .column {
     border : 1px solid black;
 }
 
 .column:hover {
     cursor: pointer;
     background-color: lightcyan;
+} */
+
+@media screen and (max-width: 768px) {
+    /* screens 768 and under */
+
+    #form  {
+        padding-top: 0px;
+    }
+   
 }
+/* @media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* CSS styles that should apply to screens between 768px and 1024px */
+/* }
+@media screen and (min-width: 768px) and (max-width: 1024px) { */
+    /* CSS styles that should apply to screens between 768px and 1024px */
+/* }  */
