@@ -109,19 +109,13 @@ function buildOrgPageDisplay(){
 
     // Begin building HTML elements
     for( var i = 0; i < orderedDivisionKeys.length; ++i ){
-      var ocdEl = document.createElement('div');
-      var ocdHeaderEl = document.createElement("h2");
-    
-      ocdEl.classList.add("columns", "is-desktop", "is-widescreen");
-      ocdHeaderEl.classList.add("title", "is-2", "is-centered", "is-vcentered", "has-text-centered");
-      ocdHeaderEl.innerText = divisions[orderedDivisionKeys[i]].name;
-
-      ocdEl.append(ocdHeaderEl);
+      var division = getDivisonElement( divisions[orderedDivisionKeys[i]] );
 
       // Sometimes there are no offices to reference
       // in that case skip creating them
       if( divisions[orderedDivisionKeys[i]].officeIndices ){
         for( var j = 0; j < divisions[orderedDivisionKeys[i]].officeIndices.length; ++j ){
+          
           var officeObjRef = divisions[orderedDivisionKeys[i]].officeIndices[j];
           var officeEl = document.createElement('div');
           var officeHeaderEl = document.createElement("h2");
@@ -157,24 +151,27 @@ function buildOrgPageDisplay(){
         noOfficeData.textContent = "No office data"
         ocdEl.append(noOfficeData)
       }
-
-
-
-
-
-
       document.getElementById("civic-data").append(ocdEl);
-      console.log(ocdEl);
-
-  
-      
+      console.log(ocdEl);      
     }
     return true;
   }
 }
 
-function getDivisonElement(){
+function getDivisonElement(divisionObj){
+  var ocdEl = document.createElement('div');
+  var ocdColEl = document.createElement('div');
+  var ocdHeaderEl = document.createElement("h2");
+    
+  ocdEl.classList.add("columns", "is-desktop", "is-widescreen");
+  ocdColEl.classList.add("column", "offices-container");
+  ocdHeaderEl.classList.add("title", "is-2", "is-centered", "is-vcentered", "has-text-centered");
+  ocdHeaderEl.innerText = divisionObj.name;
 
+  ocdColEl.append(ocdHeaderEl);
+  ocdEl.append(ocdColEl);
+
+  return ocdEl;
 }
 
 // The search is robust and a full address search is not required
