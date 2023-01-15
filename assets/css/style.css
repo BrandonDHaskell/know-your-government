@@ -1,6 +1,4 @@
-* {
-    background-color: transparent !important;
-}
+
 /* Landing Page Styling Below */
 #landing-page {
     background-image: url(/assets/images/landingBG.jpg);
@@ -70,6 +68,17 @@
     height: 100vh;
 }
 
+#yt-render {
+    background-color: transparent !important;
+}
+
+#news {
+    background-color: transparent !important;
+}
+
+footer {
+    background-color: transparent !important;
+}
 
 
 .title {
