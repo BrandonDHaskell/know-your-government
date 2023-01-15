@@ -120,7 +120,7 @@ function buildOrgPageDisplay(){
 
       // Sometimes there are no offices to reference
       // in that case skip creating them
-      if( divisions[orderedDivisionKeys[i]].officeIndices.length ){
+      if( divisions[orderedDivisionKeys[i]].officeIndices ){
         for( var j = 0; j < divisions[orderedDivisionKeys[i]].officeIndices.length; ++j ){
           var officeObjRef = divisions[orderedDivisionKeys[i]].officeIndices[j];
           var officeEl = document.createElement('div');
@@ -150,6 +150,12 @@ function buildOrgPageDisplay(){
           }
 
         }
+      } else {
+        var noOfficeData = document.createElement("p");
+
+        noOfficeData.classList.add("is-centered", "has-text-centered");
+        noOfficeData.textContent = "No office data"
+        ocdEl.append(noOfficeData)
       }
 
 
