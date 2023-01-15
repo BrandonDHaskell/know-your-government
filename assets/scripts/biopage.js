@@ -23,6 +23,7 @@
                   var ytLink = `https://www.youtube.com/embed/${videoId}`;
                 
                   var ytEmbed = document.createElement('iframe');
+                  ytEmbed.style.opacity = 1;
 
                   ytEmbed.setAttribute('src', ytLink);
                   ytEmbed.setAttribute('frameborder', '0');

@@ -1,4 +1,6 @@
-
+* {
+    background-color: transparent !important;
+}
 /* Landing Page Styling Below */
 #landing-page {
     background-image: url(/assets/images/landingBG.jpg);
@@ -67,8 +69,12 @@
     background-size: cover;
     height: 100vh;
 }
+
+
+
 .title {
     color: white;
+    
 }
 
 @media screen and (max-width: 768px) {
