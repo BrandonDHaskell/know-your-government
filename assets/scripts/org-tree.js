@@ -118,20 +118,38 @@ function buildOrgPageDisplay(){
 
       ocdEl.append(ocdHeaderEl);
 
-      for( var j = 0; j < divisions[orderedDivisionKeys[i]].officeIndices.length; ++j ){
-        var officeObjRef = divisions[orderedDivisionKeys[i]].officeIndices[j];
-        var officeEl = document.createElement('div');
-        var officeHeaderEl = document.createElement("h2");
+      // Sometimes there are no offices to reference
+      // in that case skip creating them
+      if( divisions[orderedDivisionKeys[i]].officeIndices.length ){
+        for( var j = 0; j < divisions[orderedDivisionKeys[i]].officeIndices.length; ++j ){
+          var officeObjRef = divisions[orderedDivisionKeys[i]].officeIndices[j];
+          var officeEl = document.createElement('div');
+          var officeHeaderEl = document.createElement("h2");
 
-        officeEl.classList.add("columns", "is-desktop", "is-widescreen");
-        officeHeaderEl.classList.add("title", "is-4", "is-centered", "is-vcentered", "has-text-centered");
-        officeHeaderEl.innerText = offices[officeObjRef].name;
+          officeEl.classList.add("columns", "is-desktop", "is-widescreen");
+          officeHeaderEl.classList.add("title", "is-4", "is-centered", "is-vcentered", "has-text-centered");
+          officeHeaderEl.innerText = offices[officeObjRef].name;
 
-        officeEl.append(officeHeaderEl);
-        ocdEl.append(officeEl);
-        console.log(offices[officeObjRef].name);
+          officeEl.append(officeHeaderEl);
+          ocdEl.append(officeEl);
 
+          for( var k = 0; k < offices[officeObjRef].officialIndices.length; ++k ){
+            var officialObjRef = offices[officeObjRef].officialIndices[k];
+            var officialEl = document.createElement('div');
+            var officialHeaderEl = document.createElement("h2");
 
+            officialEl.classList.add("columns", "is-desktop", "is-widescreen");
+            officialHeaderEl.classList.add("title", "is-6", "is-centered", "is-vcentered", "has-text-centered");
+            officialHeaderEl.innerText = officials[officialObjRef].name;
+
+            officialEl.append(officialHeaderEl);
+            officeEl.append(officialEl);
+            console.log(officials[officialObjRef].name);
+
+            
+          }
+
+        }
       }
 
 
