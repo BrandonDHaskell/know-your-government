@@ -88,6 +88,7 @@ function buildOrgPageDisplay(){
   var divisions = civicApiData.divisions;                   //  API data object
   var offices = civicApiData.offices;                       //  Array of civic offices
   var officials = civicApiData.officials;                   //  Array of civic officials
+  var civicDataEl = document.getElementById("civic-data");
 
   let orderedDivisionKeys = Object.keys(divisions);         //  Orderd OCD divisions  
 
@@ -103,10 +104,24 @@ function buildOrgPageDisplay(){
 
   // Update page title
   displayNormalizedResults(civicApiData.normalizedInput);
+  
+  console.log(document.getElementById("civic-data"));
+  civicDataEl.innerHTML = "";
 
   // Begin building HTML elements
   for( var i = 0; i < orderedDivisionKeys.length; ++i ){
     console.log(divisions[orderedDivisionKeys[i]].name);
+    
+    var ocdEl = document.createElement('div');
+    var ocdHeaderEl = document.createElement("h2");
+    
+    ocdEl.classList.add("columns");
+    ocdHeaderEl.classList.add("title", "is-2", "is-full");
+    ocdHeaderEl.innerText = divisions[orderedDivisionKeys[i]].name;
+
+    ocdEl.append(ocdHeaderEl);
+    document.getElementById("civic-data").append(ocdEl);
+    console.log(ocdEl);
   }
   
     return true;

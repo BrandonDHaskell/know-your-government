@@ -23,44 +23,43 @@
     <!-- title to page -->
     <section class="hero is-small has-text-centered">
         <div class="hero-body">
-          <p id="rep-title" class="title">
-            Your Representatives for <span id="normalized-search-results"></span>
-          </p>
+          <h1 id="rep-title" class="title is-1">
+            Civic Representatives for <span id="normalized-search-results"></span>
+          </h1>
         </div>
     </section>
 
     <!-- has 32px gap on each side at any breakpoint -->
-    <div class="container is-fluid">
+    <div id="civic-data" class="container is-fluid">
         <!-- bground is white to see the area the chart will go. content should be centered on the x axis -->
-        <div class="columns is-flex-direction-column is-flex-wrap-wrap" id="civic-data">
-          <div class="columns">
-            <div class="column">
-              <p class="bd-notification is-info">First column</p>
-              <div class="columns is-mobile">
-                <div class="column">
-                  <p class="bd-notification is-info">First nested column</p>
-                </div>
-                <div class="column">
-                  <p class="bd-notification is-info">Second nested column</p>
-                </div>
+        <div class="columns is-flex-direction-column is-flex-wrap-wrap" >
+          <div class="column">
+            <p class="bd-notification is-info">First column</p>
+            <div class="columns is-mobile">
+              <div class="column">
+                <p class="bd-notification is-info">First nested column</p>
+              </div>
+              <div class="column">
+                <p class="bd-notification is-info">Second nested column</p>
               </div>
             </div>
-            <div class="column">
-              <p class="bd-notification is-danger">Second column</p>
-              <div class="columns is-mobile">
-                <div class="column is-half">
-                  <p class="bd-notification is-danger">50%</p>
-                </div>
-                <div class="column">
-                  <p class="bd-notification is-danger">Auto</p>
-                </div>
-                <div class="column">
-                  <p class="bd-notification is-danger">Auto</p>
-                </div>
+          </div>
+          <div class="column">
+            <p class="bd-notification is-danger">Second column</p>
+            <div class="columns is-mobile">
+              <div class="column is-half">
+                <p class="bd-notification is-danger">50%</p>
+              </div>
+              <div class="column">
+                <p class="bd-notification is-danger">Auto</p>
+              </div>
+              <div class="column">
+                <p class="bd-notification is-danger">Auto</p>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
     
     <!-- axios link -->
