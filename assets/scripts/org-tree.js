@@ -85,29 +85,39 @@ function buildOrgPageDisplay(){
   if( localStorage.getItem("civicRepDataObj") ){
     let civicApiData = JSON.parse(localStorage.getItem("civicRepDataObj"));
     
-    var divisions = civicApiData.divisions;        //  API data object
-    var offices = civicApiData.offices;            //  Array of civic offices
-    var officials = civicApiData.officials;        //  Array of civic officials
+  var divisions = civicApiData.divisions;                   //  API data object
+  var offices = civicApiData.offices;                       //  Array of civic offices
+  var officials = civicApiData.officials;                   //  Array of civic officials
 
-    // document.getElementById("normalized-search-results");
-    setNormalizedResults(civicApiData.normalizedInput);
+  let orderedDivisionKeys = Object.keys(divisions);         //  Orderd OCD divisions  
 
-    console.log(civicApiData);
-    console.log(offices);
-    console.log(divisions);
-    console.log(offices);
-    console.log(officials);
+  console.log(civicApiData);
+  console.log(divisions);
+  console.log(offices);
+  console.log(officials);
 
-    
-    
+  // OCD keys build in length based on the OCD level
+  // sorting here to rank order: National, State, district, etc.
+  orderedDivisionKeys.join();
+  orderedDivisionKeys.sort();
+
+  // Update page title
+  displayNormalizedResults(civicApiData.normalizedInput);
+
+  // Begin building HTML elements
+  for( var i = 0; i < orderedDivisionKeys.length; ++i ){
+    console.log(divisions[orderedDivisionKeys[i]].name);
+  }
+  
     return true;
   }
 }
 
+
 // The search is robust and a full address search is not required
 // this function formats the text to display as the page header based on 
 // any part of the address being normalized
-function setNormalizedResults(normalizedObj){
+function displayNormalizedResults(normalizedObj){
   var addrStr = "";
 
   // Handle stree part
@@ -124,8 +134,6 @@ function setNormalizedResults(normalizedObj){
   addrStr += " " + normalizedObj.zip;
 
   document.getElementById("normalized-search-results").textContent = addrStr;
-
-  console.log(addrStr);
 }
 
 
