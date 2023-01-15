@@ -16,6 +16,19 @@
     padding-top: 400px;
 }
 
+#user-input{
+    margin-bottom: 10px;
+    max-width: 700px;
+    height: 50px;
+    
+}
+
+#user-click {
+    max-width: 700px;
+    height: 50px;
+}
+
+
 
 
 /* Rep Org Tree Styling Below */
@@ -50,15 +63,13 @@
 
 @media screen and (max-width: 768px) {
     /* screens 768 and under */
+   
+    #title-font {
+    font-size: 65px;
+    }
 
     #form  {
         padding-top: 0px;
     }
    
 }
-/* @media screen and (min-width: 769px) and (max-width: 1024px) {
-    /* CSS styles that should apply to screens between 768px and 1024px */
-/* }
-@media screen and (min-width: 768px) and (max-width: 1024px) { */
-    /* CSS styles that should apply to screens between 768px and 1024px */
-/* }  */
