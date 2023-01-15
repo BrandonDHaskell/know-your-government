@@ -4,13 +4,12 @@
     const API_KEY = 'AIzaSyBz6RBLJ5i8mG7CLpH6SWfYcUTiRVa7FxA'
     const requestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=${API_KEY}`;
     const ytEl = document.getElementById('yt-render');
-    const heroEl = document.getElementById('rep-search')
+    
 
     axios.get(requestUrl, {
         })
         .then(response => {
           console.log(response.data); 
-          heroEl.textContent = query
           if (response.data.items.length === 0) {
             emptyEl = document.createElement('p')
             emptyEl.textContent = "Sorry, there don't seem to be any videos available."
@@ -85,6 +84,10 @@
       var searchParamsArr = decodedURL.split('&');
       // Get the query values
       var query = searchParamsArr[0].split('=').pop();
+      // sets hero text = rep's name
+      const heroEl = document.getElementById('rep-search')
+      heroEl.textContent = query
+
       console.log(query);
       newsApi(query);
       ytApi(query);

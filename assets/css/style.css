@@ -68,16 +68,8 @@
     height: 100vh;
 }
 
-#yt-render {
-    background-color: transparent !important;
-}
-
-#news {
-    background-color: transparent !important;
-}
-
-footer {
-    background-color: transparent !important;
+#yt-render, #news, #footer {
+    background-color: transparent;
 }
 
 
