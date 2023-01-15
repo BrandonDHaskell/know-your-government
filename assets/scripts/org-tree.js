@@ -85,49 +85,60 @@ function buildOrgPageDisplay(){
   if( localStorage.getItem("civicRepDataObj") ){
     let civicApiData = JSON.parse(localStorage.getItem("civicRepDataObj"));
     
-  var divisions = civicApiData.divisions;                   //  API data object
-  var offices = civicApiData.offices;                       //  Array of civic offices
-  var officials = civicApiData.officials;                   //  Array of civic officials
-  var civicDataEl = document.getElementById("civic-data");
+    var divisions = civicApiData.divisions;                   //  API data object
+    var offices = civicApiData.offices;                       //  Array of civic offices
+    var officials = civicApiData.officials;                   //  Array of civic officials
+    var civicDataEl = document.getElementById("civic-data");
 
-  let orderedDivisionKeys = Object.keys(divisions);         //  Orderd OCD divisions  
+    let orderedDivisionKeys = Object.keys(divisions);         //  Orderd OCD divisions  
 
-  console.log(civicApiData);
-  console.log(divisions);
-  console.log(offices);
-  console.log(officials);
+    console.log(civicApiData);
+    console.log(divisions);
+    console.log(offices);
+    console.log(officials);
 
-  // OCD keys build in length based on the OCD level
-  // sorting here to rank order: National, State, district, etc.
-  orderedDivisionKeys.join();
-  orderedDivisionKeys.sort();
+    // OCD keys build in length based on the OCD level (shortest on top)
+    // sorting here to rank order: National, State, district, etc.
+    orderedDivisionKeys.join();
+    orderedDivisionKeys.sort();
 
-  // Update page title
-  displayNormalizedResults(civicApiData.normalizedInput);
+    // Update page title
+    displayNormalizedResults(civicApiData.normalizedInput);
   
-  console.log(document.getElementById("civic-data"));
-  civicDataEl.innerHTML = "";
+    // Clear existing page data if it exists
+    civicDataEl.innerHTML = "";
 
-  // Begin building HTML elements
-  for( var i = 0; i < orderedDivisionKeys.length; ++i ){
-    console.log(divisions[orderedDivisionKeys[i]].name);
+    // Begin building HTML elements
+    for( var i = 0; i < orderedDivisionKeys.length; ++i ){
+      var ocdEl = document.createElement('div');
+      var ocdHeaderEl = document.createElement("h2");
     
-    var ocdEl = document.createElement('div');
-    var ocdHeaderEl = document.createElement("h2");
-    
-    ocdEl.classList.add("columns");
-    ocdHeaderEl.classList.add("title", "is-2", "is-full");
-    ocdHeaderEl.innerText = divisions[orderedDivisionKeys[i]].name;
+      ocdEl.classList.add("columns", "is-desktop", "is-widescreen");
+      ocdHeaderEl.classList.add("title", "is-2", "is-centered", "is-vcentered", "has-text-centered");
+      ocdHeaderEl.innerText = divisions[orderedDivisionKeys[i]].name;
 
-    ocdEl.append(ocdHeaderEl);
-    document.getElementById("civic-data").append(ocdEl);
-    console.log(ocdEl);
-  }
+      ocdEl.append(ocdHeaderEl);
+
+
+
+
+
+
+
+
+      document.getElementById("civic-data").append(ocdEl);
+      console.log(ocdEl);
+
   
+      
+    }
     return true;
   }
 }
 
+function getDivisonElement(){
+
+}
 
 // The search is robust and a full address search is not required
 // this function formats the text to display as the page header based on 
