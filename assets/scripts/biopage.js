@@ -64,6 +64,10 @@ axios.get(requestUrl, {
       })    
       .catch(error => {
         console.log(error);
+        emptyEl = document.createElement('p');
+        emptyEl.textContent = "🤔 Oops! Something went wrong.";
+        newsEl.append(emptyEl);
+
       });
 
     }
