@@ -28,12 +28,16 @@
     height: 50px;
 }
 
-
-
-
 /* Rep Org Tree Styling Below */
 #org-tree-page {
-    background-color: #85b1b4;
+    /* background-color: #85b1b4; */
+    background: linear-gradient(
+        90deg,
+        rgba(149, 185, 222, 1) 0%,
+        rgba(57, 90, 136, 1) 31%,
+        rgba(53, 113, 143, 1) 73%,
+        rgba(149, 185, 222, 1) 100%
+      );
 }
 
 .org-tree {
@@ -47,18 +51,21 @@
 }
 
 #federal {
-    background-color: #d7d7d7;
-    border-style: solid;
+    background-color: white;
+    /* border-style: solid; */
     color: black;
 }
 
 .rep-card {
     border : 1px solid black;
+    margin: 5px;
+    text-align: center;
+    border-radius: 5px;
 }
 
 .rep-card:hover {
     cursor: pointer;
-    background-color: lightcyan;
+    background-color: lightgrey;
 }
 
 /* bio page styling goes here */
@@ -88,5 +95,8 @@
     #form  {
         padding-top: 0px;
     }
-   
+}
+
+a {
+    color : black;
 }

@@ -60,6 +60,7 @@
               newsLink.textContent = response.data.articles[i].title;
               newsLink.setAttribute('href',newsUrl);
               newsLink.setAttribute('target','_blank');
+              newsLink.setAttribute('style','color:blue');
               newsEl.append(newsLink);
               var brkEl = document.createElement('br');
               newsEl.append(brkEl);
