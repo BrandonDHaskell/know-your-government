@@ -7,52 +7,62 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
         <link rel="stylesheet" href="./assets/css/style.css">
     </head>
-    <body id="landing-page">
-        <div class="tile is-ancestor">
-            <div class="tile is-parent is-vertical is-6">
-                <div class="tile bear">
-                    <div class="tile is-child">
-                        <h1 id="title-font">Know Your Government</h1> 
+    <body>
+        <main id="landing-page">
+            <section>
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-vertical is-12">
+                        <div class="tile kyg-title">
+                            <div class="tile is-child">
+                                <h1 id="title-font">Know Your <br> Government</h1> 
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="tile is-parent is-vertical is-6">
-                <div class="tile bear">
-                    <div class="tile is-child has-text-centered">
-                        <input class="input" type="text" name="locationg" id="user-input" placeholder="your address here"> 
-                        <button class="button is-fullwidth" id="user-click">Submit</button>
-                    </div>
-                </div>
-            </div>
-                
-        </div>
-        <!-- Modal code for input/apiresponse validation-->
-        <div class="modal" id="modal1">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-            <header class="modal-card-head">
-                <p class="modal-card-title">
-                    Address validation
-                </p>
-
-                <button class="delete"
-                    aria-label="close">
-                </button>
-            </header>
-            <section class="modal-card-body">
-                <!-- modalText value can be filled later in js as per 
-                appropriate response from api/input validation -->
-                <p  id="modalText"></p>
             </section>
-            <footer class="modal-card-foot">
-                <button class="button is-danger">
-                    close
-                </button>
-            </footer>
-        </div>
-        </div>
-        <!-- modal close -->
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="./assets/scripts/homepage.js"></script>
+
+            <section>
+                <div class="column">
+                    <div class="columns is-12 address-input">
+                        <div class="column is-6 is-offset-6">
+                            <form action="submit" id="form">
+                                <input class="input" type="text" name="locationg" id="user-input" placeholder="your address here"> 
+                                <button class="button is-fullwidth" id="user-click">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                        
+                </div>
+                <!-- Modal code for input/apiresponse validation-->
+                <div class="modal" id="modal1">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">
+                            Address validation
+                        </p>
+    
+                        <button class="delete"
+                            aria-label="close">
+                        </button>
+                    </header>
+                    <section class="modal-card-body">
+                        <!-- modalText value can be filled later in js as per 
+                        appropriate response from api/input validation -->
+                        <p  id="modalText"></p>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button class="button is-danger">
+                            close
+                        </button>
+                    </footer>
+                </div>
+                </div>
+                <!-- modal close -->
+
+            </section>
+         </main>
+         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+         <script src="./assets/scripts/homepage.js"></script>
     </body>
 </html>
