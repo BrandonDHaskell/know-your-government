@@ -52,11 +52,11 @@
     color: black;
 }
 
-.column {
+.rep-card {
     border : 1px solid black;
 }
 
-.column:hover {
+.rep-card:hover {
     cursor: pointer;
     background-color: lightcyan;
 }
