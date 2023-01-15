@@ -75,8 +75,9 @@ document.addEventListener("keydown", (event) => {
 });
 
 //function to validate address and make a call to google civic information api
-function validateInputAddr() {
+function validateInputAddr(e) {
     //console.log("in");
+    e.preventDefault();
     var addrText = document.getElementById('user-input').value.trim();
     var addrRegex = /[#\/\!\@\$.;:{}%^&*()+`~]/gi; // invalid characters for address
 
@@ -95,6 +96,7 @@ function validateInputAddr() {
 
 function init() {
     //console.log("in");
+    document.getElementById('form').addEventListener("submit",validateInputAddr);
     document.getElementById('user-click').addEventListener("click",validateInputAddr);
 }
   

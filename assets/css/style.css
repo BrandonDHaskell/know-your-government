@@ -52,14 +52,14 @@
     color: black;
 }
 
-/* .column {
+.column {
     border : 1px solid black;
 }
 
 .column:hover {
     cursor: pointer;
     background-color: lightcyan;
-} */
+}
 
 @media screen and (max-width: 768px) {
     /* screens 768 and under */
