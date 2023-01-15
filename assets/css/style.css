@@ -61,6 +61,14 @@
     background-color: lightcyan;
 }
 
+/* bio page styling goes here */
+
+#bio-bg {
+    background-size: cover;
+    height: 100vh;
+    
+}
+
 @media screen and (max-width: 768px) {
     /* screens 768 and under */
    
