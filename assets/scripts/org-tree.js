@@ -92,7 +92,6 @@ function buildOrgPageDisplay(){
 
     let orderedDivisionKeys = Object.keys(divisions);         //  Orderd OCD divisions  
 
-    console.log(civicApiData);
     console.log(divisions);
     console.log(offices);
     console.log(officials);
@@ -119,7 +118,21 @@ function buildOrgPageDisplay(){
 
       ocdEl.append(ocdHeaderEl);
 
+      for( var j = 0; j < divisions[orderedDivisionKeys[i]].officeIndices.length; ++j ){
+        var officeObjRef = divisions[orderedDivisionKeys[i]].officeIndices[j];
+        var officeEl = document.createElement('div');
+        var officeHeaderEl = document.createElement("h2");
 
+        officeEl.classList.add("columns", "is-desktop", "is-widescreen");
+        officeHeaderEl.classList.add("title", "is-4", "is-centered", "is-vcentered", "has-text-centered");
+        officeHeaderEl.innerText = offices[officeObjRef].name;
+
+        officeEl.append(officeHeaderEl);
+        ocdEl.append(officeEl);
+        console.log(offices[officeObjRef].name);
+
+
+      }
 
 
 
