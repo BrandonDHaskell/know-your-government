@@ -75,10 +75,11 @@ function addCardClicks(){
   Array.from(cards).forEach( (card) => {
     card.addEventListener('click', (event) => {
       // encoding URI to prevent clipping when name has spaces
-      location.assign("biopage.html" + "?civicName=" + encodeURI(event.currentTarget.childNodes[1].childNodes[0].innerText));
+      location.assign("biopage.html" + "?civicName=" + event.currentTarget.dataset.name);
     });
   });
 
+  return true;
 }
 
 function buildOrgPageDisplay(){
@@ -109,50 +110,34 @@ function buildOrgPageDisplay(){
 
     // Begin building HTML elements
     for( var i = 0; i < orderedDivisionKeys.length; ++i ){
-      var division = getDivisonElement( divisions[orderedDivisionKeys[i]] );
+      var divisionEl = getDivisonElement( divisions[orderedDivisionKeys[i]] );
 
       // Sometimes there are no offices to reference
       // in that case skip creating them
       if( divisions[orderedDivisionKeys[i]].officeIndices ){
         for( var j = 0; j < divisions[orderedDivisionKeys[i]].officeIndices.length; ++j ){
           
-          var officeObjRef = divisions[orderedDivisionKeys[i]].officeIndices[j];
-          var officeEl = document.createElement('div');
-          var officeHeaderEl = document.createElement("h2");
+          var officeObj = getOfficeElement(offices[divisions[orderedDivisionKeys[i]].officeIndices[j]]);
 
-          officeEl.classList.add("columns", "is-desktop", "is-widescreen");
-          officeHeaderEl.classList.add("title", "is-4", "is-centered", "is-vcentered", "has-text-centered");
-          officeHeaderEl.innerText = offices[officeObjRef].name;
+          for( var k = 0; k < offices[divisions[orderedDivisionKeys[i]].officeIndices[j]].officialIndices.length; ++k ){
+            var officialCard = getOfficialCard( officials[offices[divisions[orderedDivisionKeys[i]].officeIndices[j]].officialIndices[k]] );
+            var officialsContainer = officeObj.getElementsByClassName('officials-container');
 
-          officeEl.append(officeHeaderEl);
-          ocdEl.append(officeEl);
+            officialsContainer[0].append(officialCard);
 
-          for( var k = 0; k < offices[officeObjRef].officialIndices.length; ++k ){
-            var officialObjRef = offices[officeObjRef].officialIndices[k];
-            var officialEl = document.createElement('div');
-            var officialHeaderEl = document.createElement("h2");
-
-            officialEl.classList.add("columns", "is-desktop", "is-widescreen");
-            officialHeaderEl.classList.add("title", "is-6", "is-centered", "is-vcentered", "has-text-centered");
-            officialHeaderEl.innerText = officials[officialObjRef].name;
-
-            officialEl.append(officialHeaderEl);
-            officeEl.append(officialEl);
-            console.log(officials[officialObjRef].name);
-
-            
           }
-
+          var officeContainer = divisionEl.getElementsByClassName('offices-container');
+          officeContainer[0].append(officeObj);
         }
       } else {
         var noOfficeData = document.createElement("p");
 
         noOfficeData.classList.add("is-centered", "has-text-centered");
         noOfficeData.textContent = "No office data"
-        ocdEl.append(noOfficeData)
+        divisionEl.append(noOfficeData)
       }
-      document.getElementById("civic-data").append(ocdEl);
-      console.log(ocdEl);      
+      var appendToEl = document.getElementById('civic-data');
+      appendToEl.append(divisionEl);
     }
     return true;
   }
@@ -172,6 +157,39 @@ function getDivisonElement(divisionObj){
   ocdEl.append(ocdColEl);
 
   return ocdEl;
+}
+
+function getOfficeElement(officeObj){
+  var officeEl = document.createElement('div');
+  var officeColEl = document.createElement('div');
+  var officeHeaderEl = document.createElement("h4");
+
+  officeEl.classList.add("columns", "is-desktop", "is-widescreen");
+  officeColEl.classList.add("column", "officials-container");
+  officeHeaderEl.classList.add("title", "is-4", "is-centered", "is-vcentered", "has-text-centered");
+  officeHeaderEl.innerText = officeObj.name;
+
+  officeColEl.append(officeHeaderEl);
+  officeEl.append(officeColEl);
+
+  return officeEl;
+}
+
+function getOfficialCard(officialObj){
+  var officialEl = document.createElement('div');
+  var officialColEl = document.createElement('div');
+  var officialHeaderEl = document.createElement("h6");
+
+  officialEl.classList.add("column", "is-desktop", "is-widescreen");
+  officialColEl.classList.add("column", "rep-card", "button");
+  officialColEl.dataset.name = encodeURI(officialObj.name);
+  officialHeaderEl.classList.add("title", "is-6", "is-centered", "is-vcentered", "has-text-centered");
+  officialHeaderEl.innerText = officialObj.name;
+
+  officialColEl.append(officialHeaderEl);
+  officialEl.append(officialColEl);
+
+  return officialEl;
 }
 
 // The search is robust and a full address search is not required
