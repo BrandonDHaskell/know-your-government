@@ -59,15 +59,18 @@ function buildOrgPageDisplay(){
           officeContainer[0].append(officeObj);
         }
       } else {
+        // var appendToDiv
         var noOfficeData = document.createElement("p");
+        var appendToEl = divisionEl.children.item(0);
 
         noOfficeData.classList.add("is-centered", "has-text-centered");
         noOfficeData.textContent = "No office data"
-        divisionEl.append(noOfficeData)
+        appendToEl.append(noOfficeData)
       }
       var appendToEl = document.getElementById('civic-data');
       appendToEl.append(divisionEl);
     }
+    addCardClicks();
     return true;
   }
 }
@@ -143,10 +146,4 @@ function displayNormalizedResults(normalizedObj){
   document.getElementById("normalized-search-results").textContent = addrStr;
 }
 
-
-function loadReps(){
-  buildOrgPageDisplay();
-  addCardClicks();
-}
-
-loadReps();
+document.onload = buildOrgPageDisplay();
