@@ -68,6 +68,23 @@
     background-color: lightgrey;
 }
 
+/* bio page styling goes here */
+
+#bio-bg {
+    background-size: cover;
+    height: 100vh;
+}
+
+#yt-render, #news, #footer {
+    background-color: transparent;
+}
+
+
+.title {
+    color: white;
+    
+}
+
 @media screen and (max-width: 768px) {
     /* screens 768 and under */
    

@@ -3,7 +3,8 @@
   function ytApi(query) {
     const API_KEY = 'AIzaSyBz6RBLJ5i8mG7CLpH6SWfYcUTiRVa7FxA'
     const requestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=${API_KEY}`;
-    const ytEl = document.getElementById('portland');
+    const ytEl = document.getElementById('yt-render');
+    
 
     axios.get(requestUrl, {
         })
@@ -21,6 +22,7 @@
                   var ytLink = `https://www.youtube.com/embed/${videoId}`;
                 
                   var ytEmbed = document.createElement('iframe');
+                  ytEmbed.style.opacity = 1;
 
                   ytEmbed.setAttribute('src', ytLink);
                   ytEmbed.setAttribute('frameborder', '0');
@@ -83,6 +85,10 @@
       var searchParamsArr = decodedURL.split('&');
       // Get the query values
       var query = searchParamsArr[0].split('=').pop();
+      // sets hero text = rep's name
+      const heroEl = document.getElementById('rep-search')
+      heroEl.textContent = query
+
       console.log(query);
       newsApi(query);
       ytApi(query);
