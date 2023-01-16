@@ -2,6 +2,7 @@
 /* Landing Page Styling Below */
 html, body {
     height: 100vh;
+    background-color: transparent;
 }
 
 #landing-page {
