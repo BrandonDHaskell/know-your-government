@@ -35,6 +35,10 @@
         })     
         .catch(error => {
           console.log(error);
+          emptyEl = document.createElement('p');
+          emptyEl.textContent = "🤔 Oops! Something went wrong.";
+          emptyEl.setAttribute("style","color:lightblue");
+          ytEl.append(emptyEl);
     });
     
   }
@@ -60,7 +64,7 @@
               newsLink.textContent = response.data.articles[i].title;
               newsLink.setAttribute('href',newsUrl);
               newsLink.setAttribute('target','_blank');
-              newsLink.setAttribute('style','color:blue');
+              newsLink.setAttribute('style','color:lightblue');
               newsEl.append(newsLink);
               var brkEl = document.createElement('br');
               newsEl.append(brkEl);
@@ -72,6 +76,7 @@
         console.log(error);
         emptyEl = document.createElement('p');
         emptyEl.textContent = "🤔 Oops! Something went wrong.";
+        emptyEl.setAttribute("style","color:lightblue");
         newsEl.append(emptyEl);
 
       });
