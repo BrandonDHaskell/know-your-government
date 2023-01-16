@@ -35,14 +35,14 @@ html, body {
 
 /* Rep Org Tree Styling Below */
 #org-tree-page {
-    /* background-color: #85b1b4; */
-    background: linear-gradient(
+    background-color: #03292c;
+    /* background: linear-gradient(
         90deg,
         rgba(149, 185, 222, 1) 0%,
         rgba(57, 90, 136, 1) 31%,
         rgba(53, 113, 143, 1) 73%,
         rgba(149, 185, 222, 1) 100%
-      );
+      ); */
 }
 
 .org-tree {
