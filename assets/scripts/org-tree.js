@@ -33,6 +33,7 @@ function getKygDataObjs(){
     for( var i = 0; i < officials.length; ++i ){
       var kygDataObj = {};
 
+      kygDataObj[""];
       kygDataObj["repName"] = officials[i].name;
       kygDataObj["partyName"] = officials[i].party;
 
@@ -99,10 +100,6 @@ function addCardClicks(){
 
 }
 
-// document.onload = function(event){
-//   kygDataArr = getKygDataObjs();
-//   displayReps(kygDataArr);
-// };
   
 function loadReps(){
   kygDataArr = getKygDataObjs();
@@ -110,6 +107,10 @@ function loadReps(){
   console.log(kygDataArr);
   displayReps(kygDataArr);
   addCardClicks();
+}
+
+function getTreeChart(){
+
 }
 
 loadReps();
