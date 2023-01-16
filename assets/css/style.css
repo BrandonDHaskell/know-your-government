@@ -50,8 +50,9 @@ html, body {
 }
 
 .navbar {
-    background-color: #d7d7d7;
-    
+    /* background-color: #d7d7d7; */
+    background-color: transparent;
+    color: white;
 }
 
 #federal {
@@ -79,8 +80,16 @@ html, body {
     height: 100vh;
 }
 
-#yt-render, #news, #footer {
+#bio-main {
     background-color: transparent;
+}
+
+#yt-render, #news {
+    background-color: transparent;
+}
+
+a strong {
+    color: white;
 }
 
 
