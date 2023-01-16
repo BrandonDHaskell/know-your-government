@@ -50,11 +50,6 @@ html, body {
     background-color: #f3f5f6;
 }
 
-.navbar {
-    /* background-color: #d7d7d7; */
-    background-color: transparent;
-    color: white;
-}
 
 #federal {
     background-color: white;
@@ -81,9 +76,6 @@ html, body {
     height: 100vh;
 }
 
-#bio-main {
-    background-color: transparent;
-}
 
 #yt-render, #news {
     background-color: transparent;
