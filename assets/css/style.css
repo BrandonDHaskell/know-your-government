@@ -1,5 +1,9 @@
 
 /* Landing Page Styling Below */
+html, body {
+    height: 100vh;
+}
+
 #landing-page {
     background-image: url(/assets/images/landingBG.jpg);
     background-size: cover;
