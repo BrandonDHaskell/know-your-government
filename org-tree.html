@@ -21,12 +21,21 @@
         </div>    
     </nav> -->
     <!-- title to page -->
-    <section class="hero is-small has-text-centered">
+    <!-- <section class="hero is-small has-text-centered">
         <div class="hero-body">
           <p class="title" style="color:white">
             Your Representatives
           </p>
         </div>
+    </section> -->
+    <section id="chart" class="svg-container">
+      <!-- <svg id="chart-svg" class="svg-content-responsive" preserveAspectRatio="xMinYMin meet" viewBox="0 0 600 400"> -->
+        <svg id="chart-svg" height="1200" width="1200">
+        <g transform="translate(40, 10)">
+          <g class="links"></g>
+          <g class="nodes"></g>
+        </g>
+      </svg>
     </section>
 
     <!-- has 32px gap on each side at any breakpoint -->
@@ -46,7 +55,9 @@
   <br><br>
     
     <!-- axios link -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v4.min.js" type="text/javascript"></script>
     <script src="./assets/scripts/org-tree.js"></script> 
   </body>
 </html>
