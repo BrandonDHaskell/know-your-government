@@ -116,7 +116,7 @@ function getTreeChart(){
 
   console.log(fData);
 
-  var treeLayout = d3.tree().size( [1000, 1000] );
+  var treeLayout = d3.tree().size( [1200, 800] );
   treeLayout(fData);
 
   var parentNumber = 27;
@@ -156,7 +156,23 @@ function getTreeChart(){
         + " " + (d.source.y + 100) + "," + d.target.x
         + " " + d.source.y + "," + d.source.x;
     });
-}
+
+    // Add text to parent nodes
+    nodes.selectAll("text.nodes")
+      .data(fData.descendants().slice(0, parentNumber))
+      .enter()
+      .append("text")
+      .attr("class", "text")
+      .attr("transform", (d) => `translate(${d.y+10},${d.x+5})`)
+      .text( (d => d.data.key) );
+
+    // Add text to children
+//     nodes.selectAll("text.nodes")
+//       .data(treeData.descendants().slice(parentNumber))
+//       .enter()
+//       .append("a")
+//       .attr("xlink:href", )
+// }
 
 // The search is robust and a full address search is not required
 // this function formats the text to display as the page header based on 
