@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <style>
       .rect {
-        fill: "#83C0E0";
+        fill: #83C0E0;
       }
 
       .circle {
@@ -20,11 +20,24 @@
         stroke: #ccc;
         stroke-width: 1px;
       }
+
+      .text-c {
+        font-family: "Arial Black", Gadget, sans-serif;
+        fill: #030303;
+        font-weight: bold;
+        font-size: 12pt;
+      }
+
+      .text-p {
+        /* font-family: "Arial Black", Gadget, sans-serif; */
+        fill: #d3d3d3;
+        font-size: 12pt;
+      }
     </style>
   </head>
   <body id="org-tree-page">
     <!-- nav section with link back to landing page -->
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <div class="navbar-menu">
                 <div class="navbar-start">
@@ -34,11 +47,11 @@
                 </div>
             </div>
         </div>    
-    </nav>
+    </nav> -->
     <!-- title to page -->
     <!-- <section class="hero is-small has-text-centered">
         <div class="hero-body">
-          <p class="title">
+          <p class="title" style="color:white">
             Your Representatives
           </p>
         </div>
@@ -53,12 +66,20 @@
     </section>
 
     <!-- has 32px gap on each side at any breakpoint -->
-    <!-- <div class="container is-fluid"> -->
+    <div class="container is-fluid">
         <!-- bground is white to see the area the chart will go. content should be centered on the x axis -->
-        <!-- <div class="columns is-flex-direction-column is-flex-wrap-wrap" id="federal"> -->
+        <div class="columns is-flex-direction-column is-flex-wrap-wrap" id="federal">
 
-        <!-- </div> -->
-    <!-- </div> -->
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="tags is-centered">
+    <a href="./index.html" class="is-size-4">
+      <strong>HOME</strong>
+    </a>
+  </div>
+  <br><br>
     
     <!-- axios link -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

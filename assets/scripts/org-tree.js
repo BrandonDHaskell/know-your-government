@@ -26,7 +26,6 @@ function getKygDataObjs(){
     var kygDataObjs = [];                     //  Array of KYG data objects
     var addr = getNormalizedAddrStr(googObj.normalizedInput);    //  normalized address input
 
-    console.log(googObj);
     for( var i = 0; i < officials.length; ++i ){
       var kygDataObj = {};
       
@@ -91,8 +90,8 @@ function addCardClicks(){
 
   Array.from(cards).forEach( (card) => {
     card.addEventListener('click', (event) => {
-      console.log(event.currentTarget);
-      location.assign("biopage.html" + "?civicName=" + event.currentTarget.dataset.name);
+      // encoding URI to prevent clipping when name has spaces
+      location.assign("biopage.html" + "?civicName=" + encodeURI(event.currentTarget.childNodes[1].childNodes[0].innerText));
     });
   });
 
@@ -119,13 +118,12 @@ function getTreeChart(){
   var treeLayout = d3.tree().size( [1200, 800] );
   treeLayout(fData);
 
-  var parentNumber = 27;
+  var parentNodes = getParentCount(fData);
   var nodes = d3.select("svg g.nodes");
 
   // Parent node formatting
-  console.log(nodes.selectAll("circle").data(fData.descendants().slice(0, parentNumber)));
   nodes.selectAll("circle")
-    .data(fData.descendants().slice(0, parentNumber))
+    .data(fData.descendants().slice(0, parentNodes))
     .enter()
     .append("circle")
     .attr("class", "circle")
@@ -134,7 +132,7 @@ function getTreeChart(){
 
   // Children node formatting
   nodes.selectAll("rect")
-    .data(fData.descendants().slice(parentNumber))
+    .data(fData.descendants().slice(parentNodes))
     .enter()
     .append("rect")
     .attr("class", "rect")
@@ -143,7 +141,7 @@ function getTreeChart(){
     .attr("height", 25)
     .attr("y", -25 / 2 );
 
-  // Build links
+  // Build links using cubic Bezier curve
   d3.selectAll("svg g.links")
     .selectAll("line")
     .data(fData.links())
@@ -159,23 +157,23 @@ function getTreeChart(){
 
     // Add text to parent nodes
     nodes.selectAll("text.nodes")
-      .data(fData.descendants().slice(0, parentNumber))
+      .data(fData.descendants().slice(0, parentNodes))
       .enter()
       .append("text")
-      .attr("class", "text")
-      .attr("transform", (d) => `translate(${d.y+10},${d.x+5})`)
+      .attr("class", "text-p")
+      .attr("transform", (d) => `translate(${d.y+10},${d.x+5}) rotate(-45)`)
       .text( (d => d.data.key) );
 
     // Add text to children
     nodes.selectAll("text.nodes")
-      .data(fData.descendants().slice(parentNumber))
+      .data(fData.descendants().slice(parentNodes))
       .enter()
       .append("a")
       .attr("xlink:href", (d) => "biopage.html?civicName=" + encodeURI( d.data.repName ) )
-      .attr("target", "_blank")
+      //.attr("target", "_blank")
       .append("text")
-      .attr("class", "text")
-      .attr("transform", (d) => `translate(${d.y+10},${d.y+5})` )
+      .attr("class", "text-c")
+      .attr("transform", (d) => `translate(${d.y+10},${d.x+5})` )
       .text( ( (d) => d.data.repName ))
       .on("mouseover", mouseOverText)
       .on("mouseout", mouseOutText);
@@ -222,12 +220,27 @@ function getNormalizedAddrStr( normalizedObj ){
   return addrStr;
 }
 
+// Need to know how many parent nodes there are
+// i.e. How many divisions and offices to display
+function getParentCount(fData){
+  var count = 0;
+  
+  if( fData ){
+    count += fData.data.values.length + 1; // 1 for the root node
+
+    for( var i = 0; i < fData.data.values.length; ++i ){
+      count += fData.data.values[i].values.length;
+    }
+    return count ;
+  }
+  return 0;
+}
+
 function loadReps(){
   // kygDataArr = getKygDataObjs();
-  // console.log("obj value");
-  // console.log(kygDataArr);
   // displayReps(kygDataArr);
   // addCardClicks();
+  getTreeChart();
 }
 
 loadReps();
