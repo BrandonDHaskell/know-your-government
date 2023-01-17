@@ -99,6 +99,10 @@ function addCardClicks(){
 }
 
 
+function orgChartRenderV2(){
+  var data = getKygDataObjs();
+}
+
 function getTreeChart(){
   var data = getKygDataObjs();
   
@@ -112,20 +116,20 @@ function getTreeChart(){
 
   console.log(fData);
 
-  var treeLayout = d3.tree().size( [900, 800] )
+  var treeLayout = d3.tree().size( [1000, 1000] );
   treeLayout(fData);
 
   var parentNumber = 27;
   var nodes = d3.select("svg g.nodes");
 
   // Parent node formatting
-  console.log(nodes.selectAll("cirlce").data(fData.descendants().slice(0, parentNumber)));
-  nodes.selectAll("cirlce")
+  console.log(nodes.selectAll("circle").data(fData.descendants().slice(0, parentNumber)));
+  nodes.selectAll("circle")
     .data(fData.descendants().slice(0, parentNumber))
     .enter()
-    .append("cirlce")
+    .append("circle")
     .attr("class", "circle")
-    .attr("transform", d => 'translate(${d.x},${d.y})')
+    .attr("transform", (d) => `translate(${d.y},${d.x})`)
     .attr("r", 8);
 
   // Children node formatting
@@ -134,10 +138,24 @@ function getTreeChart(){
     .enter()
     .append("rect")
     .attr("class", "rect")
-    .attr("transform", d => ('translate(${d.x},${d.y})'))
-    .attr("transform", d => ((d.data.repName + " ").length + 4 ) * 9 )
+    .attr("transform", (d) => `translate(${d.y},${d.x})` )
+    .attr("width", (d) => ((d.data.repName + " ").length + 4 ) * 9 )
     .attr("height", 25)
     .attr("y", -25 / 2 );
+
+  // Build links
+  d3.selectAll("svg g.links")
+    .selectAll("line")
+    .data(fData.links())
+    .enter()
+    .append("path")
+    .classed("link", true)
+    .attr("d", function (d) {
+      return "M" + d.target.y + "," + d.target.x
+        + "C" + (d.source.y + 100) + "," + d.target.x
+        + " " + (d.source.y + 100) + "," + d.target.x
+        + " " + d.source.y + "," + d.source.x;
+    });
 }
 
 // The search is robust and a full address search is not required
@@ -163,9 +181,9 @@ function getNormalizedAddrStr( normalizedObj ){
 }
 
 function loadReps(){
-  kygDataArr = getKygDataObjs();
-  console.log("obj value");
-  console.log(kygDataArr);
+  // kygDataArr = getKygDataObjs();
+  // console.log("obj value");
+  // console.log(kygDataArr);
   // displayReps(kygDataArr);
   // addCardClicks();
 }
