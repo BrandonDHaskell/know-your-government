@@ -115,7 +115,7 @@ function getTreeChart(){
 
   console.log(fData);
 
-  var treeLayout = d3.tree().size( [1200, 600] );  //
+  var treeLayout = d3.tree().size( [1800, 600] );  //
   treeLayout(fData);
 
   var parentNodes = getParentCount(fData);
