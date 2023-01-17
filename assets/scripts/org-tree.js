@@ -1,22 +1,3 @@
-
-  // //function to create representative cards and display them  
-  // function createReps(repObj) {
-  //   var card = `<div class="column rep-card"  data-name=${repObj.repName}>
-  //           <h1><strong>${repObj.repName}</strong><h1>
-  //            <p><strong>Office: </strong>${repObj.office} <p>
-  //            <p><strong>Role: </strong>${repObj.officeRole}</p>
-  //            <p><strong>Party Name: </strong>${repObj.partyName}</p>
-             
-  //   </div>`;
-  //   document.getElementById('federal').innerHTML += card;
-  // }
-
-  // function displayReps(kygDataArr) {
-  //   for (var i = 0 ; i< kygDataArr.length ; i++) {
-  //       createReps(kygDataArr[i]); 
-  //   }
-  // }
-
 function getKygDataObjs(){
   if( localStorage.getItem("civicRepDataObj") ){
     var googObj = JSON.parse(localStorage.getItem("civicRepDataObj"));
@@ -75,9 +56,7 @@ function getKygDataObjs(){
 function displayOrgTree(){
   if( localStorage.getItem("civicRepDataObj") ){
     var googObj = JSON.parse(localStorage.getItem("civicRepDataObj"));
-  
-    console.log(googObj);
-  
+    
   } else {
     // There is an error and data is missing!
     return "Page load failed! Data missing!"
@@ -112,8 +91,6 @@ function getTreeChart(){
     .entries(data);
 
   var fData = d3.hierarchy(nestedData[0], d => d.values);
-
-  console.log(fData);
 
   var treeLayout = d3.tree().size( [1800, 600] );  //
   treeLayout(fData);

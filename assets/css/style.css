@@ -36,13 +36,6 @@ html, body {
 /* Rep Org Tree Styling Below */
 #org-tree-page {
     background-color: #03292c;
-    /* background: linear-gradient(
-        90deg,
-        rgba(149, 185, 222, 1) 0%,
-        rgba(57, 90, 136, 1) 31%,
-        rgba(53, 113, 143, 1) 73%,
-        rgba(149, 185, 222, 1) 100%
-      ); */
 }
 
 .org-tree {
@@ -53,7 +46,6 @@ html, body {
 
 #federal {
     background-color: white;
-    /* border-style: solid; */
     color: black;
 }
 
@@ -143,21 +135,3 @@ a:hover {
         padding-top: 0px;
     }
 }
-
-
-/* 
-.svg-container {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%;  aspect ratio 
-    vertical-align: top;
-    overflow: hidden;
-  }
-
-  .svg-content-responsive {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-  } */

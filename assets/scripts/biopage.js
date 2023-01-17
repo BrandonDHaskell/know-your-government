@@ -9,7 +9,6 @@
     axios.get(requestUrl, {
         })
         .then(response => {
-          console.log(response.data); 
           if (response.data.items.length === 0) {
             emptyEl = document.createElement('p')
             emptyEl.textContent = "Sorry, there don't seem to be any videos available."
@@ -34,7 +33,6 @@
           }
         })     
         .catch(error => {
-          console.log(error);
           emptyEl = document.createElement('p');
           emptyEl.textContent = "🤔 Oops! Something went wrong.";
           emptyEl.setAttribute("style","color:lightblue");
@@ -51,7 +49,6 @@
       axios.get(reqUrl, {
       })
       .then(response => {
-        console.log(response.data); 
         if (response.data.articles.length === 0) {
           emptyEl = document.createElement('p');
           emptyEl.textContent = "Sorry, there don't seem to be any articles available."
@@ -73,7 +70,6 @@
         }
       })    
       .catch(error => {
-        console.log(error);
         emptyEl = document.createElement('p');
         emptyEl.textContent = "🤔 Oops! Something went wrong.";
         emptyEl.setAttribute("style","color:lightblue");
@@ -94,7 +90,6 @@
       const heroEl = document.getElementById('rep-search')
       heroEl.textContent = query
 
-      console.log(query);
       newsApi(query);
       ytApi(query);
     }
