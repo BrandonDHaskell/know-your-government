@@ -115,11 +115,11 @@ function getTreeChart(){
 
   console.log(fData);
 
-  var treeLayout = d3.tree().size( [1200, 800] );
+  var treeLayout = d3.tree().size( [1200, 600] );  //
   treeLayout(fData);
 
   var parentNodes = getParentCount(fData);
-  var nodes = d3.select("svg g.nodes");
+  var nodes = d3.select("#chart-svg g.nodes");
 
   // Parent node formatting
   nodes.selectAll("circle")
@@ -137,12 +137,12 @@ function getTreeChart(){
     .append("rect")
     .attr("class", "rect")
     .attr("transform", (d) => `translate(${d.y},${d.x})` )
-    .attr("width", (d) => ((d.data.repName + " ").length + 4 ) * 9 )
+    .attr("width", (d) => ((d.data.repName + " ").length + 4 ) * 10 )
     .attr("height", 25)
     .attr("y", -25 / 2 );
 
   // Build links using cubic Bezier curve
-  d3.selectAll("svg g.links")
+  d3.selectAll("#chart-svg g.links")
     .selectAll("line")
     .data(fData.links())
     .enter()
@@ -155,28 +155,28 @@ function getTreeChart(){
         + " " + d.source.y + "," + d.source.x;
     });
 
-    // Add text to parent nodes
-    nodes.selectAll("text.nodes")
-      .data(fData.descendants().slice(0, parentNodes))
-      .enter()
-      .append("text")
-      .attr("class", "text-p")
-      .attr("transform", (d) => `translate(${d.y+10},${d.x+5}) rotate(-45)`)
-      .text( (d => d.data.key) );
+  // Add text to parent nodes
+  nodes.selectAll("text.nodes")
+    .data(fData.descendants().slice(0, parentNodes))
+    .enter()
+    .append("text")
+    .attr("class", "text-p")
+    .attr("transform", (d) => `translate(${d.y-60},${d.x+50}) rotate(-45)`)
+    .text( (d => d.data.key) );
 
-    // Add text to children
-    nodes.selectAll("text.nodes")
-      .data(fData.descendants().slice(parentNodes))
-      .enter()
-      .append("a")
-      .attr("xlink:href", (d) => "biopage.html?civicName=" + encodeURI( d.data.repName ) )
-      //.attr("target", "_blank")
-      .append("text")
-      .attr("class", "text-c")
-      .attr("transform", (d) => `translate(${d.y+10},${d.x+5})` )
-      .text( ( (d) => d.data.repName ))
-      .on("mouseover", mouseOverText)
-      .on("mouseout", mouseOutText);
+  // Add text to children
+  nodes.selectAll("text.nodes")
+    .data(fData.descendants().slice(parentNodes))
+    .enter()
+    .append("a")
+    .attr("xlink:href", (d) => "biopage.html?civicName=" + encodeURI( d.data.repName ) )
+    //.attr("target", "_blank")
+    .append("text")
+    .attr("class", "text-c")
+    .attr("transform", (d) => `translate(${d.y+10},${d.x+5})` )
+    .text( ( (d) => d.data.repName ))
+    .on("mouseover", mouseOverText)
+    .on("mouseout", mouseOutText);
 }
 
 function mouseOverText(d) {
@@ -195,7 +195,7 @@ function mouseOutText(d) {
     .duration(200)
     .style("fill", "#030303")
     .style("storke-width", "1px" )
-    .style("text-decoration", "underline");
+    .style("text-decoration", "none");
 }
 
 // The search is robust and a full address search is not required

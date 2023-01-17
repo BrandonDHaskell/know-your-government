@@ -91,6 +91,46 @@ a strong {
     
 }
 
+a {
+    color : black;
+}
+
+a:hover {
+    color: lightblue;
+}
+
+.rect {
+    fill: #83C0E0;
+}
+
+.circle {
+    fill: #F8E473;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1px;
+}
+
+.text-c {
+    font-family: "Arial Black", Gadget, sans-serif;
+    fill: #030303;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.text-p {
+    /* font-family: "Arial Black", Gadget, sans-serif; */
+    fill: #d3d3d3;
+    font-size: 14pt;
+}
+
+#chart {
+    margin-top: 30px;
+}
+
+
 @media screen and (max-width: 768px) {
     /* screens 768 and under */
    
@@ -103,10 +143,20 @@ a strong {
     }
 }
 
-a {
-    color : black;
-}
 
-a:hover {
-    color: lightblue;
-}
+/* 
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;  aspect ratio 
+    vertical-align: top;
+    overflow: hidden;
+  }
+
+  .svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  } */

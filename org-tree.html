@@ -6,34 +6,6 @@
     <title>Your Rep List</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <style>
-      .rect {
-        fill: #83C0E0;
-      }
-
-      .circle {
-        fill: #F8E473;
-      }
-
-      .link {
-        fill: none;
-        stroke: #ccc;
-        stroke-width: 1px;
-      }
-
-      .text-c {
-        font-family: "Arial Black", Gadget, sans-serif;
-        fill: #030303;
-        font-weight: bold;
-        font-size: 12pt;
-      }
-
-      .text-p {
-        /* font-family: "Arial Black", Gadget, sans-serif; */
-        fill: #d3d3d3;
-        font-size: 12pt;
-      }
-    </style>
   </head>
   <body id="org-tree-page">
     <!-- nav section with link back to landing page -->
@@ -56,8 +28,9 @@
           </p>
         </div>
     </section> -->
-    <section id="chart">
-      <svg width="1200" height="1200">
+    <section id="chart" class="svg-container">
+      <!-- <svg id="chart-svg" class="svg-content-responsive" preserveAspectRatio="xMinYMin meet" viewBox="0 0 600 400"> -->
+        <svg id="chart-svg" height="1200" width="1200">
         <g transform="translate(40, 10)">
           <g class="links"></g>
           <g class="nodes"></g>
