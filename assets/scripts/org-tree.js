@@ -167,12 +167,38 @@ function getTreeChart(){
       .text( (d => d.data.key) );
 
     // Add text to children
-//     nodes.selectAll("text.nodes")
-//       .data(treeData.descendants().slice(parentNumber))
-//       .enter()
-//       .append("a")
-//       .attr("xlink:href", )
-// }
+    nodes.selectAll("text.nodes")
+      .data(fData.descendants().slice(parentNumber))
+      .enter()
+      .append("a")
+      .attr("xlink:href", (d) => "biopage.html?civicName=" + encodeURI( d.data.repName ) )
+      .attr("target", "_blank")
+      .append("text")
+      .attr("class", "text")
+      .attr("transform", (d) => `translate(${d.y+10},${d.y+5})` )
+      .text( ( (d) => d.data.repName ))
+      .on("mouseover", mouseOverText)
+      .on("mouseout", mouseOutText);
+}
+
+function mouseOverText(d) {
+  d3.select(this)
+    .transition()
+    .duration(200)
+    .style("fill", "#F8E473" )
+    .style("storke-width", "1px" )
+    .style("text-decoration", "underline");
+
+}
+
+function mouseOutText(d) {
+  d3.select(this)
+    .transition()
+    .duration(200)
+    .style("fill", "#030303")
+    .style("storke-width", "1px" )
+    .style("text-decoration", "underline");
+}
 
 // The search is robust and a full address search is not required
 // this function formats the text to display as the page header based on 
