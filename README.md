@@ -64,7 +64,13 @@ TODO: More info in this section
 
 ## Bio Page
 
-TODO: More info in this section
+Once a selection is made on the Org Chart page, a function obtains the candidates name and uses it as a query parameter in two seperate API calls. The first is for the Youtube Date V3 API which returns 5 search results with the requried Youtube video ID. We then dyanamical created mutiple `iframe` tags and embeded the video results within. 
+
+![youtube results](assets/images/biopage1.png)
+
+The second is for the Perigon API which returns 10 search news results with the requried web link for access access. Again, we used JavaScript to dyanamical create a list of `a` tags and rendered them to the page.  
+
+![perigon results](assets/images/biopage2.png)
 
 
 ## Google Civic API and Data
