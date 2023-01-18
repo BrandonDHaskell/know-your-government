@@ -151,7 +151,8 @@ This project was done in collaboration with the following people:
 
 ### Travis DuPree
 
-TODO: Add your info here
+* [LinkedIn](https://www.linkedin.com/in/travis-dupree-96380218b/)
+* [Github](https://github.com/Traveye)
 
 
 ## License
