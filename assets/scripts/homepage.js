@@ -5,7 +5,6 @@ function onSearchButtonClick(addr){
     .then( (response) => {
         // this if statement might be redundnt for axios
         if( response.status >= 200 && response.status < 300 ){ 
-            console.log(response);
             localStorage.setItem("civicRepDataObj" , JSON.stringify(response.data) );
             loadFamilyTreePage("");
             return true;
@@ -13,7 +12,6 @@ function onSearchButtonClick(addr){
     })
     .catch( (error) => {
         // "404 : Not found" - if address is legit but not available 
-        console.log(error);
         if ( error.response.status == 404 ) {
 
             document.getElementById('modalText').textContent = "We don't have any data for that address";
@@ -82,9 +80,6 @@ function validateInputAddr(e) {
     var addrRegex = /[#\/\!\@\$.;:{}%^&*()+`~]/gi; // invalid characters for address
 
     if (!addrText || addrRegex.test(addrText)) {
-      console.log(addrText);
-      //addrEL.value = "";
-      //addrEL.focus();
       document.getElementById('modalText').textContent = "Please enter valid address";
       openModal();
       return 
