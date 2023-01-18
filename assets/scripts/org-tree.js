@@ -53,34 +53,6 @@ function getKygDataObjs(){
   }
 }
 
-function displayOrgTree(){
-  if( localStorage.getItem("civicRepDataObj") ){
-    var googObj = JSON.parse(localStorage.getItem("civicRepDataObj"));
-    
-  } else {
-    // There is an error and data is missing!
-    return "Page load failed! Data missing!"
-  }
-
-}
-
-function addCardClicks(){
-  var cards = document.getElementsByClassName('rep-card');
-
-  Array.from(cards).forEach( (card) => {
-    card.addEventListener('click', (event) => {
-      // encoding URI to prevent clipping when name has spaces
-      location.assign("biopage.html" + "?civicName=" + encodeURI(event.currentTarget.childNodes[1].childNodes[0].innerText));
-    });
-  });
-
-}
-
-
-function orgChartRenderV2(){
-  var data = getKygDataObjs();
-}
-
 function getTreeChart(){
   var data = getKygDataObjs();
   
@@ -213,13 +185,8 @@ function getParentCount(fData){
   return 0;
 }
 
-function loadReps(){
-  // kygDataArr = getKygDataObjs();
-  // displayReps(kygDataArr);
-  // addCardClicks();
-  getTreeChart();
-}
+document.addEventListener("DOMContentLoaded", getTreeChart);
 
-loadReps();
+
   
   
