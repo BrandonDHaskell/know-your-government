@@ -8,6 +8,7 @@ function getKygDataObjs(){
     var kygDataObjs = [];                     //  Array of KYG data objects
     var addr = getNormalizedAddrStr(googObj.normalizedInput);    //  normalized address input
 
+    console.log(googObj);
     for( var i = 0; i < officials.length; ++i ){
       var kygDataObj = {};
       

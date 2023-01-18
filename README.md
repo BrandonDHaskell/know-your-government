@@ -85,7 +85,19 @@ The Bio Page uses the YouTube and Perigon APIs and makes calls to both of these 
 
 ## Google Civic API and Data
 
-For any U.S. residential address, you can look up who represents that address at each elected level of government using Google Civic information API.  The object returned is organized into 4 main parts: 1) a normalized address, 2) an object of divisions, 3) an array of offices, and 4) an array of officials.  Each of these contains data about those entities.  
+For any U.S. residential address, you can look up who represents that address at each elected level of government using Google Civic information API.  The object returned is organized into 4 main parts: 1) a normalized address, 2) an object of divisions, 3) an array of offices, and 4) an array of officials.  Each of these contains data about those entities.
+
+Example high level data:
+
+```javascript
+object = {
+    normalizedInput: {...},
+    divisions: {...},
+    office: [...],
+    officials: [...]
+}
+
+```
 
 
 
