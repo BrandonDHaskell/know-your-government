@@ -114,7 +114,7 @@ TODO: More info in this section
 
 To build out this project, we used the CSS framework Bulma. Bulma is a free and open-source CSS framework that is used to create responsive and modern web designs. It is based on Flexbox to create easy and responsive grid layouts. 
 
-We used a range of pre-designed UI elements, such as forms, buttons, heros, and modals, that were easily customized to fit the needs of our project. We primarily relied on the classes associated with layouts, `tiles` and `columns`, however, we also styled some elements of the page such like the buttons and modals.
+We used a range of pre-designed UI elements, such as forms, buttons, heros, and modals, that were easily customized to fit the needs of our project. We primarily relied on the classes associated with layouts, `tiles` and `columns`, however, we also styled some elements of the page such like the buttons and modals. Thanks to the built in repsonsiveness, we only needed a few media queries to obtain our desired styling.
 
 
 ## Bonus Features
