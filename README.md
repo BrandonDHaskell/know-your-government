@@ -85,7 +85,13 @@ Read more about Google Civic API [here](https://developers.google.com/civic-info
 
 ## YouTube API and Data
 
-TODO: More info in this section
+The YouTube Data API v3 is a web service that allows developers to access and manipulate YouTube videos and other resources. It can be used to retrieve information about videos, channels, playlists, and other resources on YouTube. 
+
+API endpoint - GET https://www.googleapis.com/youtube/v3/search
+
+This api requires a "query" and an "api-key" as parameters. 
+
+Read more about the The YouTube Data API v3 [here](https://developers.google.com/youtube/v3).
 
 
 # Perigon API and Data
