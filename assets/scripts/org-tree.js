@@ -8,10 +8,6 @@ function getKygDataObjs(){
     var kygDataObjs = [];                     //  Array of KYG data objects
     var addr = getNormalizedAddrStr(googObj.normalizedInput);    //  normalized address input
 
-    console.log(googObj);
-    console.log(divisions);
-    console.log(offices);
-    console.log(officials);
     for( var i = 0; i < officials.length; ++i ){
       var kygDataObj = {};
       
@@ -56,29 +52,6 @@ function getKygDataObjs(){
     // There is an error and data is missing!
     return "Page load failed! Data missing!"
   }
-}
-
-function displayOrgTree(){
-  if( localStorage.getItem("civicRepDataObj") ){
-    var googObj = JSON.parse(localStorage.getItem("civicRepDataObj"));
-    
-  } else {
-    // There is an error and data is missing!
-    return "Page load failed! Data missing!"
-  }
-
-}
-
-function addCardClicks(){
-  var cards = document.getElementsByClassName('rep-card');
-
-  Array.from(cards).forEach( (card) => {
-    card.addEventListener('click', (event) => {
-      // encoding URI to prevent clipping when name has spaces
-      location.assign("biopage.html" + "?civicName=" + encodeURI(event.currentTarget.childNodes[1].childNodes[0].innerText));
-    });
-  });
-
 }
 
 function getTreeChart(){
