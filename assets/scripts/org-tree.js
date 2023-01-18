@@ -97,11 +97,6 @@ function addCardClicks(){
 
 }
 
-
-function orgChartRenderV2(){
-  var data = getKygDataObjs();
-}
-
 function getTreeChart(){
   var data = getKygDataObjs();
   
