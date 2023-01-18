@@ -75,12 +75,19 @@ The Civic Data is pulled from ```localStorage``` and transformed into data nodes
 
 Example Org Chart Rendering:
 
-```ADD IMAGE HERE```
+![org tree display gif](assets/images/orgtree.gif)
 
 
 ## Bio Page
 
 The Bio Page uses the YouTube and Perigon APIs and makes calls to both of these APIs to get media information about the Civic Official that was clicked.  The YouTube API returns a list of video information that is dispalayed on the page as embeded video snippets.  The Perigon API returns information about related new articles about the Civic Official.  This data is tranformed and displayed on the page as links to the articles.
+Once a selection is made on the Org Chart page, a function obtains the candidates name and uses it as a query parameter in two seperate API calls. The first is for the Youtube Date V3 API which returns 5 search results with the requried Youtube video ID. We then dyanamical created mutiple `iframe` tags and embeded the video results within. 
+
+![youtube results](assets/images/biopage1.png)
+
+The second is for the Perigon API which returns 10 search news results with the requried web link for access access. Again, we used JavaScript to dyanamical create a list of `a` tags and rendered them to the page.  
+
+![perigon results](assets/images/biopage2.png)
 
 
 ## Google Civic API and Data
@@ -118,10 +125,16 @@ It uses a normalized addressing sytem. If address is valid, it gives an object w
 
 ## YouTube API and Data
 
-TODO: More info in this section
+The YouTube Data API v3 is a web service that allows developers to access and manipulate YouTube videos and other resources. It can be used to retrieve information about videos, channels, playlists, and other resources on YouTube. 
+
+API endpoint - GET https://www.googleapis.com/youtube/v3/search
+
+This api requires a "query" and an "api-key" as parameters. 
+
+Read more about the The YouTube Data API v3 [here](https://developers.google.com/youtube/v3).
 
 
-# Perigon API and Data
+## Perigon API and Data
 
 Perigon API is an HTTP REST API for retrieving news and journalist information. It accepts HTTP GET and POST requests, and returns JSON-encoded responses. Standard HTTP response codes are used to indicate a response status for each request.
 
@@ -137,9 +150,12 @@ Read more about perigon API [here](https://docs.goperigon.com/docs)
 TODO: More info in this section
 
 
-## CSS Implementation
+## CSS Framework Implementation
 
-TODO: More info in this section
+To build out this project, we used the CSS framework Bulma. Bulma is a free and open-source CSS framework that is used to create responsive and modern web designs. It is based on Flexbox to create easy and responsive grid layouts. 
+
+We used a range of pre-designed UI elements, such as forms, buttons, heros, and modals, that were easily customized to fit the needs of our project. We primarily relied on the classes associated with layouts, `tiles` and `columns`, however, we also styled some elements of the page such like the buttons and modals. Thanks to the built in repsonsiveness, we only needed a few media queries to obtain our desired styling.
+
 
 ## Bonus Features
 
@@ -178,7 +194,8 @@ This project was done in collaboration with the following people:
 
 ### Travis DuPree
 
-TODO: Add your info here
+* [LinkedIn](https://www.linkedin.com/in/travis-dupree-96380218b/)
+* [Github](https://github.com/Traveye)
 
 
 ## License

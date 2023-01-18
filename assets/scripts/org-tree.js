@@ -58,9 +58,7 @@ function getKygDataObjs(){
 function displayOrgTree(){
   if( localStorage.getItem("civicRepDataObj") ){
     var googObj = JSON.parse(localStorage.getItem("civicRepDataObj"));
-  
-    console.log(googObj);
-  
+    
   } else {
     // There is an error and data is missing!
     return "Page load failed! Data missing!"
@@ -90,8 +88,6 @@ function getTreeChart(){
     .entries(data);
 
   var fData = d3.hierarchy(nestedData[0], d => d.values);
-
-  console.log(fData);
 
   var treeLayout = d3.tree().size( [1800, 600] );  //
   treeLayout(fData);
