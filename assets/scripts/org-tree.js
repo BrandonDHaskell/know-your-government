@@ -9,6 +9,9 @@ function getKygDataObjs(){
     var addr = getNormalizedAddrStr(googObj.normalizedInput);    //  normalized address input
 
     console.log(googObj);
+    console.log(divisions);
+    console.log(offices);
+    console.log(officials);
     for( var i = 0; i < officials.length; ++i ){
       var kygDataObj = {};
       

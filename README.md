@@ -73,6 +73,8 @@ The Org Chart page uses [D3.js](https://d3js.org/) to transform the Civic Inform
 
 The Civic Data is pulled from ```localStorage``` and transformed into data nodes that [D3.js](https://d3js.org/) uses to generate the chart.  The data structures are outlined in more detail in the [Data Conversions for APIs and D3.js](#data-conversions-for-apis-and-d3js) section below.  A user can click on a Civic Official's name and get more information about that official from the Bio Page.
 
+The Org Chart is rendered in ```<svg>``` tags and uses ```<g>``` tags to render and format the chart structure.
+
 Example Org Chart Rendering:
 
 ![org tree display gif](assets/images/orgtree.gif)
@@ -97,30 +99,71 @@ For any U.S. residential address, you can look up who represents that address at
 Example high level data:
 
 ```javascript
-object = {
-    normalizedInput: {...},
-    divisions: {...},
-    office: [...],
-    officials: [...]
+dataObject = {
+    "normalizedInput" : {...},
+    "divisions" : {...},
+    "offices" : [...],
+    "officials" : [...]
 }
 
 ```
 
+The ```normalizedInput``` object contains the normalized address input.  At a minimum, it contains a state, and can inlcude a street part, city part, or a zip code based on what the user input is.
 
+Eaxample data:
+```javascript
+normalizedData = {
+    "line1" : "...",
+    "city" : "...",
+    "state" : "...",
+    " zip" : "..."
+}
 
-API endpoint - GET https://www.googleapis.com/civicinfo/v2/representatives
+```
+The ```divisions``` object contains the divisions of goverenment that presides over the address submitted.  For each division, there is a ```divisionId``` and this maps to one of the offices in the ```offices``` array.
 
-This api requires "address" and "api-key" as query parameters. 
+Exmaple data:
+```javascript
+divisions = {
+    "ocd-division/country:us": {...},
+    "ocd-division/country:us/state:ca": {...},
+    "ocd-division/country:us/state:ca/cd:36": {...},
+    "ocd-division/country:us/state:ca/county:los_angeles": {...},
+    "ocd-division/country:us/state:ca/place:santa_monica": {...}
+}
+```
 
+The ```offices``` array of objects that ontains a list of all the offices that belong to one of the ```divisions```.  Each office includes an index reference to the ```officials``` array to map it to a civic official.
 
+Example office object:
+```javascript
+object = {
+    divisionId: "ocd-division/country:us",
+    name: "President of the United States",
+    levels: [ "country" ],
+    roles: [ "headOfGovernment", "headOfState" ],
+    officeIndices: [ 0 ]
+}
+```
 
+The ```officials``` array contains a list of civic officials that belong to one of the offices.
 
+Example official object:
+```javascript
+object = {
+    name: "Joesph R. Biden",
+    party: "Democratic Party",
+    phones: [...],
+    address: [ {...} ],
+    channels: [ {...} ],
+    geocodingSummaries: [ {...} ],
+    ...
+}
+```
 
+API endpoint - GET [https://www.googleapis.com/civicinfo/v2/representatives](https://www.googleapis.com/civicinfo/v2/representatives)
 
-Read more about Google Civic API [here](https://developers.google.com/civic-information/docs/v2)
-
-
-It uses a normalized addressing sytem. If address is valid, it gives an object which has information about all the government officials, their levels and roles for that location. If the address is invalid/not found, it throws Bad request/address not found repsonse.
+This api requires and address or address part, and an "api-key" as query parameters.  Read more about Google Civic API [here](https://developers.google.com/civic-information/docs/v2).
 
 
 ## YouTube API and Data
@@ -147,7 +190,31 @@ Read more about perigon API [here](https://docs.goperigon.com/docs)
 
 ## Data Conversions for APIs and D3.js
 
-TODO: More info in this section
+The [Google Civic API and Data](#google-civic-api-and-data) is converted to an array of data objects that are passed to [D3.js](https://d3js.org/) to be formatted into an dendrogram to be rendered on the page.
+
+In the ```getKygDataObjs()``` function, the ```divisions``` data is joined onto the ```offices``` object data, which is in turn joined onto the ```officials``` data to create ```kygDataObj``` objects.  
+
+Example ```kygDataObj``` data object:
+```javascript
+kygDataObj = {
+    division: "...",
+    divisionName: "..."
+    office: "...",
+    officeRole: "...",
+    normalizedAddr: "...",
+    repName: "...",
+    partyName: "...",
+    addressStreet1: "...",
+    addressStreet2: "...",
+    addressCity: "...",
+    addressState: "...",
+    addressZip: "...",
+    phoneNum: "...",
+    photoUrl: "...",
+    relatedLinks: "..."
+}
+```
+The array of ```kygDataObj``` obects are passed to [D3.js](https://d3js.org/) to generate an org chart.  Within [D3.js](https://d3js.org/), keys are made on the ```divison```, ```office```, and ```repName``` to build a relationship graph.  This graph is then used [D3.js](https://d3js.org/) to determine how the org chart should be rendered.  This operation is handled in the ```getTreeChart()``` function.  Within this function, URLs are also generated for the names so, once clicked, they will direct to the bio page with the name appended as a query.
 
 
 ## CSS Framework Implementation
@@ -159,7 +226,7 @@ We used a range of pre-designed UI elements, such as forms, buttons, heros, and 
 
 ## Bonus Features
 
-TODO: More info in this section
+
 
 
 ## Usage
