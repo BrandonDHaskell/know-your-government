@@ -94,7 +94,7 @@ This api requires a "query" and an "api-key" as parameters.
 Read more about the The YouTube Data API v3 [here](https://developers.google.com/youtube/v3).
 
 
-# Perigon API and Data
+## Perigon API and Data
 
 Perigon API is an HTTP REST API for retrieving news and journalist information. It accepts HTTP GET and POST requests, and returns JSON-encoded responses. Standard HTTP response codes are used to indicate a response status for each request.
 
@@ -110,9 +110,12 @@ Read more about perigon API [here](https://docs.goperigon.com/docs)
 TODO: More info in this section
 
 
-## CSS Implementation
+## CSS Framework Implementation
 
-TODO: More info in this section
+To build out this project, we used the CSS framework Bulma. Bulma is a free and open-source CSS framework that is used to create responsive and modern web designs. It is based on Flexbox to create easy and responsive grid layouts. 
+
+We used a range of pre-designed UI elements, such as forms, buttons, heros, and modals, that were easily customized to fit the needs of our project. We primarily relied on the classes associated with layouts, `tiles` and `columns`, however, we also styled some elements of the page such like the buttons and modals.
+
 
 ## Bonus Features
 
