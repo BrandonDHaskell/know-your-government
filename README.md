@@ -11,18 +11,19 @@ See the [Deployed Site](https://bhaskell7901.github.io/know-your-government/)
 
 1. [Technology Used](#technology-used)
 2. [Overview and Strategies](#overview-and-strategies)
-3. [Landing Page](#landing-page)
-4. [Org Chart Page](#org-chart-page)
-5. [Bio Page](#bio-page)
-6. [Google Civic API and Data](#google-civic-api-and-data)
-7. [YouTube API and Data](#youtube-api-and-data)
-8. [Perigon API and Data](#perigon-api-and-data)
-9. [Data Conversions for APIs and D3.js](#data-conversions-for-apis-and-d3js)
-10. [CSS Implementations](#css-implementations)
-11 [Bonus Features](#bonus-features)
-12. [Learning Points](#learning-points)
-13. [Author Info](#author-info)
-14. [License](#license)
+3. [User Story](#user-story)
+4. [Landing Page](#landing-page)
+5. [Org Chart Page](#org-chart-page)
+6. [Bio Page](#bio-page)
+7. [Google Civic API and Data](#google-civic-api-and-data)
+8. [YouTube API and Data](#youtube-api-and-data)
+9. [Perigon API and Data](#perigon-api-and-data)
+10. [Data Conversions for APIs and D3.js](#data-conversions-for-apis-and-d3js)
+11. [CSS Implementations](#css-implementations)
+12. [Bonus Features](#bonus-features)
+13. [Learning Points](#learning-points)
+14. [Author Info](#author-info)
+15. [License](#license)
 
 
 ## Technology Used 
@@ -53,6 +54,21 @@ There is a separate HTML page for each of the different steps: the langing page 
 We utilized the google [Civic Information API](https://developers.google.com/civic-information/docs/v2) to get government information, [D3.js](https://d3js.org/) to display the civic information in a dendrogram, and a YouTube search API and a [Perigon](https://docs.goperigon.com/docs) search API to get information about the officials in office.
 
 To transition from the Landing page to the Org Chart page, once a valid address is entered, we pull the Civic Information Data from the API and confirm there are no issues.  If there are not issues, we save the data object in ```localStorage``` for later use.  We then redirt to the Org Chart page which looks for the Civic Information Data object in ```localStorage```.  The Civic Information data is then transformed into data objects that are passed to [D3.js](https://d3js.org/) for processesing into a dendrogram.  This process is outlined in more detail in the [Data Conversions for APIs and D3.js](#data-conversions-for-apis-and-d3js) section below.  The dendrogram has links applied to the Civic Official's names that redirect to the Bio Page and update the URL with the name.  Once the Bio Page loads, the name is used to get data from the YoutTube and Perigon APIs to get videos and news articles about that official.
+
+
+## User Story
+
+1. As a interested member,
+I want to enter my location,
+So that i can know who my representatives are
+
+2. As a interested member,
+I want to know how my government is organized,
+So that i can be an informed citizen and make informed decisions
+
+3. As a interested member,
+I want to see media about a representative I’m interested in,
+So that i can determine how they represent me
 
 
 ## Landing Page
