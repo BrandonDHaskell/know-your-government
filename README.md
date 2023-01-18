@@ -69,23 +69,40 @@ Upon entering the address, the input is validated for correctness before API cal
 
 ## Org Chart Page
 
-The Org Chart page 
+The Org Chart page uses [D3.js](https://d3js.org/) to transform the Civic Information data into an org chart (dendrogram) style chart for the user.  We felt this would be the best view for a user to consume the large amount of data the API pushes out.  It also give a vision representation of the data that we felt would be most useful for users.  
+
+The Civic Data is pulled from ```localStorage``` and transformed into data nodes that [D3.js](https://d3js.org/) uses to generate the chart.  The data structures are outlined in more detail in the [Data Conversions for APIs and D3.js](#data-conversions-for-apis-and-d3js) section below.  A user can click on a Civic Official's name and get more information about that official from the Bio Page.
+
+Example Org Chart Rendering:
+
+```ADD IMAGE HERE```
 
 
 ## Bio Page
 
-TODO: More info in this section
+The Bio Page uses the YouTube and Perigon APIs and makes calls to both of these APIs to get media information about the Civic Official that was clicked.  The YouTube API returns a list of video information that is dispalayed on the page as embeded video snippets.  The Perigon API returns information about related new articles about the Civic Official.  This data is tranformed and displayed on the page as links to the articles.
 
 
 ## Google Civic API and Data
 
-For any U.S. residential address, you can look up who represents that address at each elected level of government using Google Civic information API. It uses a normalized addressing sytem. If address is valid, it gives an object which has information about all the government officials, their levels and roles for that location. If the address is invalid/not found, it throws Bad request/address not found repsonse.
+For any U.S. residential address, you can look up who represents that address at each elected level of government using Google Civic information API.  The object returned is organized into 4 main parts: 1) a normalized address, 2) an object of divisions, 3) an array of offices, and 4) an array of officials.  Each of these contains data about those entities.  
+
+
 
 API endpoint - GET https://www.googleapis.com/civicinfo/v2/representatives
 
 This api requires "address" and "api-key" as query parameters. 
 
+
+
+
+
+
 Read more about Google Civic API [here](https://developers.google.com/civic-information/docs/v2)
+
+
+It uses a normalized addressing sytem. If address is valid, it gives an object which has information about all the government officials, their levels and roles for that location. If the address is invalid/not found, it throws Bad request/address not found repsonse.
+
 
 ## YouTube API and Data
 

@@ -1,22 +1,4 @@
 
-  // //function to create representative cards and display them  
-  // function createReps(repObj) {
-  //   var card = `<div class="column rep-card"  data-name=${repObj.repName}>
-  //           <h1><strong>${repObj.repName}</strong><h1>
-  //            <p><strong>Office: </strong>${repObj.office} <p>
-  //            <p><strong>Role: </strong>${repObj.officeRole}</p>
-  //            <p><strong>Party Name: </strong>${repObj.partyName}</p>
-             
-  //   </div>`;
-  //   document.getElementById('federal').innerHTML += card;
-  // }
-
-  // function displayReps(kygDataArr) {
-  //   for (var i = 0 ; i< kygDataArr.length ; i++) {
-  //       createReps(kygDataArr[i]); 
-  //   }
-  // }
-
 function getKygDataObjs(){
   if( localStorage.getItem("civicRepDataObj") ){
     var googObj = JSON.parse(localStorage.getItem("civicRepDataObj"));
@@ -231,13 +213,8 @@ function getParentCount(fData){
   return 0;
 }
 
-function loadReps(){
-  // kygDataArr = getKygDataObjs();
-  // displayReps(kygDataArr);
-  // addCardClicks();
-  getTreeChart();
-}
+document.addEventListener("DOMContentLoaded", getTreeChart);
 
-loadReps();
+
   
   
