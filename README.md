@@ -45,8 +45,18 @@ A general overview of the application flow is:
 2. See who your civic officials are & what offices they hold
 3. Click on any name to get more information about them
 
+The primary user experience we were looking to fill is someone who is curious or concerned and wants to know who oversees the government that affects them based on their address.  A concerned or curious user could enter in a address, a state, a zip code, or just a city name to get information on how the government entities are organized and then explore individuals who hold officies in those entities; giving the user a quick and easy way to get information and explore deeper if they wished to do so.
+
+There is a separate HTML page for each of the different steps: the langing page (```index.html```), the org chart page (```org-tree.html```), and the bio page (```biopage.html```).  Each of the pages are described in more detail below.  We choose to implement 3 pages because there are 3 distinct facets to the interactions for this web app: ) identifying a location in the U.S. you are interested in, 2) getting information about the government entities that preside over that location, 3) and getting information about the civic officials withinin those governement entities.
+
+We utilized the google [Civic Information API](https://developers.google.com/civic-information/docs/v2) to get government information, [D3.js](https://d3js.org/) to display the civic information in a dendrogram, and a YouTube search API and a [Perigon](https://docs.goperigon.com/docs) search API to get information about the officials in office.
+
+To transition from the Landing page to the Org Chart page, once a valid address is entered, we pull the Civic Information Data from the API and confirm there are no issues.  If there are not issues, we save the data object in ```localStorage``` for later use.  We then redirt to the Org Chart page which looks for the Civic Information Data object in ```localStorage```.  The Civic Information data is then transformed into data objects that are passed to [D3.js](https://d3js.org/) for processesing into a dendrogram.  This process is outlined in more detail in the [Data Conversions for APIs and D3.js](#data-conversions-for-apis-and-d3js) section below.  The dendrogram has links applied to the Civic Official's names that redirect to the Bio Page and update the URL with the name.  Once the Bio Page loads, the name is used to get data from the YoutTube and Perigon APIs to get videos and news articles about that official.
+
 
 ## Landing Page
+
+We implemented some input validation for the address being entered.  However, the civic API does a good job of normalizing input into more of a standad address format.  Our validation consisted of ensuring there are no special character like: "!", "|", "?", etc. that would not be used in an address.  Address errors and response errors are displayed to the user in the form of modals.  
 
 This is the homepage of the application where the user can enter his/her location to find out who their representatives are. 
 
@@ -59,7 +69,7 @@ Upon entering the address, the input is validated for correctness before API cal
 
 ## Org Chart Page
 
-TODO: More info in this section
+The Org Chart page 
 
 
 ## Bio Page
