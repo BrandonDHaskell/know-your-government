@@ -226,7 +226,9 @@ We used a range of pre-designed UI elements, such as forms, buttons, heros, and 
 
 ## Bonus Features
 
-
+* Add Voting Stats to Reps and Senators - (Pending: [Issue#17](https://github.com/bhaskell7901/know-your-government/issues/17) )
+* Org-Tree Page Structure Update - (Complete: [Issue#27](https://github.com/bhaskell7901/know-your-government/issues/27) ) (converted to [D3.js](https://d3js.org/) dendrogram)
+* Update Homepage With Image and Polish Up - (Complete: [Issue#32](https://github.com/bhaskell7901/know-your-government/issues/32) )
 
 
 ## Usage
@@ -235,12 +237,12 @@ To use this application, simple navigate to the [Live Site](https://bhaskell7901
 
 ## Learning Points 
 
-TODO: More info in this section
+There was a lot of learning all around, just getting up to speed with [Bulma](https://bulma.io/), [Axios](https://axios-http.com/), and [D3.js](https://d3js.org/).  In addition to these APIs, we also learned a lot about Github Project and how useful they are for keeping a team up to speed on project management and allowing all members to stay on top of the work.
 
 
 **Project View Snapshot**
 
-TODO: More info in this section
+ ![GitHub project view](/assets/images/github-project1-screenshot.png)
 
 
 ## Author Info
