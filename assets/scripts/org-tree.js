@@ -1,4 +1,3 @@
-
 function getKygDataObjs(){
   if( localStorage.getItem("civicRepDataObj") ){
     var googObj = JSON.parse(localStorage.getItem("civicRepDataObj"));
