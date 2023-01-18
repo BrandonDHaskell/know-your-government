@@ -19,9 +19,10 @@ See the [Deployed Site](https://bhaskell7901.github.io/know-your-government/)
 8. [Perigon API and Data](#perigon-api-and-data)
 9. [Data Conversions for APIs and D3.js](#data-conversions-for-apis-and-d3js)
 10. [CSS Implementations](#css-implementations)
-11. [Learning Points](#learning-points)
-12. [Author Info](#author-info)
-13. [License](#license)
+11 [Bonus Features](#bonus-features)
+12. [Learning Points](#learning-points)
+13. [Author Info](#author-info)
+14. [License](#license)
 
 
 ## Technology Used 
