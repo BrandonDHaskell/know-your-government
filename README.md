@@ -284,6 +284,3 @@ This project was done in collaboration with the following people:
 * [Github](https://github.com/Traveye)
 
 
-## License
-
-MIT License
