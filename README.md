@@ -4,7 +4,7 @@ Welcome to Know Your Government!  An app that lets you see how your governement 
 
 See what's happening by clicking the link below.
 
-See the [Deployed Site](https://bhaskell7901.github.io/know-your-government/)
+See the [Deployed Site](https://BrandonDHaskell.github.io/know-your-government/)
 
 
 ## Table of Contents
